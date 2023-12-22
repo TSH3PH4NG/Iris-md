@@ -1,4 +1,4 @@
-FROM tshephang01/tshephang:latest
+FROM quay.io/inrlwabot/inrl:latest
 RUN git clone https://github.com/TSH3PH4NG/Iris-md /root/tsp
 WORKDIR /root/tsp/
 RUN yarn install --network-concurrency 1
