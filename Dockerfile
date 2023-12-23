@@ -1,4 +1,4 @@
-FROM quay.io/inrlwabot/inrl-bot:latest
+FROM tshephang01/tshephang:latest
 RUN git clone https://github.com/TSH3PH4NG/Iris-MD.git /root/tsp
 WORKDIR /root/tsp/
 RUN npm install pm2 -g
