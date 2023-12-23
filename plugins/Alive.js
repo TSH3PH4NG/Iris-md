@@ -1,4 +1,4 @@
-const {command} = require("lib");
+const {command} = require("../lib");
 
 command({
   pattern:"alive",
