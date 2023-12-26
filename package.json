@@ -32,7 +32,6 @@
         "sequelize": "^6.23.0",
         "sqlite3": "^5.1.6",
         "ytsr": "^3.8.4",
-        "ytdl-core": "^4.11.4",
         "youtubei.js": "6.4.1"
   }
 }
