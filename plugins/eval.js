@@ -1,7 +1,5 @@
 const {
     command,
-    getBuffer,
-    findMusic,
     syt,
     getJson,
     getBuffer,
