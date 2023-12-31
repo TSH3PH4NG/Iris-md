@@ -27,6 +27,7 @@ module.exports = {
     GOODBYE_MSG: process.env.GOODBYE_MSG || 'Hi @user It was Nice Seeing you',
     AUTHOR: process.env.AUTHOR || 'Tshephang',
     SUDO: process.env.SUDO || '',
+    CR: toBool(proccess.env.CR) ||"false",
     HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || '',
     HEROKU_API_KEY: process.env.HEROKU_API_KEY || '',
     OWNER_NAME: process.env.OWNER_NAME || 'Tshephang',
