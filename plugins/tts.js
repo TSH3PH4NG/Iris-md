@@ -1,3 +1,5 @@
+/*created on 13 January by Tshephang , don't remove credit.*/
+
 const {command} = require("../lib");
 const fetch = require("node-fetch");
 const axios = require('axios');
@@ -15,7 +17,7 @@ fromMe: true,
 },
 async(message,match, m)=>{
 	
-if(match.length > 50 || !match ) return message.send(message.jid , "i need something short/i need a query" , {quoted: m})
+if(match.length > 80 || !match ) return message.send(message.jid , "i need something short/i need a query" , {quoted: m})
 const requestBody = {
   model_id: 'eleven_multilingual_v2',
   text: match,
