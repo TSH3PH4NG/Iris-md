@@ -16,9 +16,9 @@ command({
         try {
             let evaled = await eval(`(async()=> { ${match.replace("~", "")} }) ()`);
             if (typeof evaled !== "string") evaled = require("util").inspect(evaled);
-            await message.reply(evaled);
+            return await message.reply(evaled);
         } catch (err) {
-            await message.reply(util.format(err));
+           return await message.reply(util.format(err));
         }
     }
 });
