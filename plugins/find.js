@@ -1,7 +1,7 @@
-const {command , isPrivate , getBuffer} = require("../lib/");
-const ytsr = require('ytsr');
+const {command , metaData , getBuffer ,syt , getSong} = require("../lib");
 const acrcloud = require("acrcloud")
 const fs = require("fs-extra");
+const ffmpeg = require('fluent-ffmpeg');
 
 command(
 {
@@ -49,12 +49,28 @@ message.reply(e)
 }
  
 })
-async function syt(res){
-const filters = await ytsr.getFilters(res);
-    const filter = filters.get('Type').get('Video');
-    const options = {
-      limit: 1, // Retrieve only the first result
-    };
-const sr = await ytsr(filter.url , options);
-  return sr.items[0]
+
+command({
+ on: "text",
+ fromMe: false
+
+},
+async(message,match ,m)=> {
+if(match.toLowerCase() == "get" && m.quoted.text.includes("𝑡𝑖𝑡𝑙𝑒 :") === true){
+
+		
+try{
+
+let final = m.quoted.message.imageMessage.caption.split("┠ ")[1] 
+final = final.replace("𝑡𝑖𝑡𝑙𝑒 :", "")
+let title = final;
+await message.client.sendMessage(message.jid, {text: `_downloading:_ ${title}`},{quoted: m})
+let data = await getSong(title);
+
+await message.client.sendMessage(message.jid , {audio: data , mimetype: "audio/mpeg"})
+
+}catch(e){
+return e
 }
+}
+})
