@@ -36,7 +36,7 @@ const {
   } = require("./lib/session");
   if (!fs.existsSync("./resources/auth/creds.json")) {
       MakeSession(config.SESSION_ID, "./resources/auth/creds.json").then(
-          console.log("Vesrion : " + require("./package.json").version)
+          console.log("vesrion : " + require("./package.json").version)
       );
   }
   fs.readdirSync(__dirname + "/resources/database/").forEach((db) => {
@@ -62,12 +62,6 @@ const {
       });
 
 
-         /* store.bind(conn.ev);
-           //store.readFromFile("./database/store.json");
-          setInterval(() => {
-          store.writeToFile("./lib/store.json");
-          console.log("saved store");
-          }, 10_000);*/
       conn.ev.on("connection.update",
           async (s) => {
               const {
@@ -143,9 +137,12 @@ const {
                               let prefix =  config.HANDLERS.trim();
 
                               let comman = text_msg;
-
+                               try{
                               if(!comman?.startsWith(prefix)) comman = false;
-
+                              }catch(e){
+                              	comman = false
+                               }
+      
                               msg.prefix = prefix;
 
 
@@ -209,8 +206,8 @@ const {
           });
   };
 
-  app.get("/", (req, res) => res.type('html').send(`<p1>Hello world</p2>`));
-app.listen(port, () => console.log(`Ducky Server listening on port http://localhost:${port}!`));
+  app.get("/", (req, res) => res.type('html').send(`<p2>Hello world</p2>`));
+app.listen(port, () => console.log(` Server listening on port http://localhost:${port}!`));
   setTimeout(() => {
       Iris();
   }, 6000);
