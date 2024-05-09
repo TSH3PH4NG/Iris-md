@@ -138,7 +138,7 @@ const {
 
                               let comman = text_msg;
                                try{
-                              if(!comman?.startsWith(prefix)) comman = false;
+                              if(typeof comman === "string" && !comman.startsWith(prefix)) comman = false;
                               }catch(e){
                               	comman = false
                                }
