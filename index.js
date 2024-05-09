@@ -1,1 +1,216 @@
-const _0x1f459f=_0x5361;(function(_0x99d10d,_0x4e962a){const _0xcca026=_0x5361,_0x23a122=_0x99d10d();while(!![]){try{const _0xd6f02a=parseInt(_0xcca026(0x242))/0x1*(parseInt(_0xcca026(0x209))/0x2)+parseInt(_0xcca026(0x208))/0x3+parseInt(_0xcca026(0x1ee))/0x4*(-parseInt(_0xcca026(0x202))/0x5)+parseInt(_0xcca026(0x219))/0x6*(parseInt(_0xcca026(0x241))/0x7)+-parseInt(_0xcca026(0x210))/0x8*(-parseInt(_0xcca026(0x22a))/0x9)+-parseInt(_0xcca026(0x236))/0xa+parseInt(_0xcca026(0x218))/0xb;if(_0xd6f02a===_0x4e962a)break;else _0x23a122['push'](_0x23a122['shift']());}catch(_0x571409){_0x23a122['push'](_0x23a122['shift']());}}}(_0x323a,0xe6470));function _0x323a(){const _0x1c81a6=['string','./resources/auth/creds.json','includes','5984AribTL','commands','\x0aFrom\x20:\x20','env','version','@whiskeysockets/baileys','stringify','send','Syncing\x20Database','At\x20:\x20','video','can\x27t\x20take\x20calls\x20,\x20please\x20leave\x20a\x20message.','sudo','open','then','creds.update','sendMessage','connecting','prefix','⬇️\x20\x20Installing\x20Plugins...','5855aoLXsL','```','./lib','ℹ️\x20Connecting\x20to\x20WhatsApp...\x20Please\x20Wait.','/package.json','videoMessage','383784hRPQoi','678lChVku','✅\x20Login\x20Successful!','subject','existsSync','DATABASE','type','WORK_TYPE','2101640hMBWQM','messages','pattern','image','sync','/plugins/','@g.us','trim','15012690vPXANS','828UNzCWM','/plugins','SESSION_ID','connection.update','extname','split','sticker','true','imageMessage','./lib/Messages','forEach','groupMetadata','close','length','readdirSync','messages.upsert','rejectCall','18aAPlLQ','get','group-participants.update','child','<p1>Hello\x20world</p2>','./lib/session','express','/resources/auth','startsWith','macOS','store','text','8162500jNDBKg','Version:\x20','sender','path','function','log','./lib/events','```iris-md\x20connected\x20\x0aversion\x20:\x20','notify','\x0aSudo:','./config','19957EOQgDI','3244CFtElH','body','photo','PORT','from'];_0x323a=function(){return _0x1c81a6;};return _0x323a();}const {default:makeWASocket,useMultiFileAuthState,Browsers,makeInMemoryStore}=require(_0x1f459f(0x1f3)),path=require(_0x1f459f(0x239)),{Image,Message,Sticker,Video}=require(_0x1f459f(0x222));let fs=require('fs'),config=require(_0x1f459f(0x240));function _0x5361(_0x98d855,_0x1cbbda){const _0x323a8e=_0x323a();return _0x5361=function(_0x536197,_0x1db28e){_0x536197=_0x536197-0x1ee;let _0x46350b=_0x323a8e[_0x536197];return _0x46350b;},_0x5361(_0x98d855,_0x1cbbda);}const pino=require('pino');logger=pino({'level':'silent'});const port=process[_0x1f459f(0x1f1)][_0x1f459f(0x245)]||0x1f40,{serialize,Greetings}=require(_0x1f459f(0x204)),events=require(_0x1f459f(0x23c)),express=require(_0x1f459f(0x230)),app=express(),store=makeInMemoryStore({'logger':pino()[_0x1f459f(0x22d)]({'level':'silent','stream':_0x1f459f(0x234)})}),{MakeSession}=require(_0x1f459f(0x22f));!fs[_0x1f459f(0x20c)](_0x1f459f(0x248))&&MakeSession(config[_0x1f459f(0x21b)],_0x1f459f(0x248))[_0x1f459f(0x1fc)](console[_0x1f459f(0x23b)](_0x1f459f(0x237)+require('./package.json')[_0x1f459f(0x1f2)]));async function Iris(){const _0xfff658=_0x1f459f,{state:_0x572272,saveCreds:_0x3f8365}=await useMultiFileAuthState(__dirname+_0xfff658(0x231));let _0x1295bd=makeWASocket({'auth':_0x572272,'printQRInTerminal':![],'logger':pino({'level':'silent'}),'browser':Browsers[_0xfff658(0x233)]('Desktop'),'downloadHistory':![],'syncFullHistory':![]});_0x1295bd['ev']['on'](_0xfff658(0x21c),async _0x27e945=>{const _0x1a5191=_0xfff658,{connection:_0x5ee9cf,lastDisconnect:_0x30fa}=_0x27e945;_0x5ee9cf===_0x1a5191(0x1ff)&&(console['log']('Iris-md'),console[_0x1a5191(0x23b)](_0x1a5191(0x205)));if(_0x5ee9cf===_0x1a5191(0x1fb)){console[_0x1a5191(0x23b)](_0x1a5191(0x20a)),console['log'](_0x1a5191(0x1f6)),config[_0x1a5191(0x20d)][_0x1a5191(0x214)](),_0x1295bd['ev']['on'](_0x1a5191(0x1fd),_0x3f8365),console[_0x1a5191(0x23b)](_0x1a5191(0x201)),fs[_0x1a5191(0x227)](__dirname+_0x1a5191(0x21a))[_0x1a5191(0x223)](_0x6405a8=>{const _0x454cd1=_0x1a5191;path[_0x454cd1(0x21d)](_0x6405a8)['toLowerCase']()==='.js'&&require(__dirname+_0x454cd1(0x215)+_0x6405a8);}),console[_0x1a5191(0x23b)]('✅\x20Plugins\x20Installed!');let _0x5e0721=_0x1a5191(0x23d)+require(__dirname+_0x1a5191(0x206))[_0x1a5191(0x1f2)]+'\x0aTotal\x20Plugins\x20:\x20'+events['commands'][_0x1a5191(0x226)]+'\x0aWorktype:\x20'+config[_0x1a5191(0x20f)]+_0x1a5191(0x203);_0x1295bd[_0x1a5191(0x1fe)](_0x1295bd['user']['id'],{'text':_0x5e0721}),_0x1295bd['ev']['on'](_0x1a5191(0x22c),async _0x6952c9=>{Greetings(_0x6952c9,_0x1295bd);}),_0x1295bd['ev']['on']('call',async _0x39368b=>{const _0x9f9fe9=_0x1a5191;if(config['CR']==_0x9f9fe9(0x220)){_0x39368b=_0x39368b['map'](_0x1cee7d=>_0x1cee7d),_0x39368b=_0x39368b[0x0];let {status:_0x1bbb4c,from:_0x567b0e,id:_0x2557b7}=_0x39368b;if(_0x1bbb4c=='offer')return await _0x1295bd[_0x9f9fe9(0x229)](_0x2557b7,_0x567b0e),await _0x1295bd['sendMessage'](_0x567b0e,{'text':_0x9f9fe9(0x1f9)});;};}),_0x1295bd['ev']['on'](_0x1a5191(0x228),async _0x402800=>{const _0x128e0a=_0x1a5191;if(_0x402800[_0x128e0a(0x20e)]!==_0x128e0a(0x23e))return;let _0x230cd9=await serialize(JSON['parse'](JSON[_0x128e0a(0x1f4)](_0x402800[_0x128e0a(0x211)][0x0])),_0x1295bd);if(!_0x230cd9)return;let _0x52bd13=_0x230cd9[_0x128e0a(0x238)][_0x128e0a(0x21e)]('@')[0x0];_0x52bd13=_0x52bd13['split'](':')[0x0];let _0x3d9594=_0x230cd9[_0x128e0a(0x243)];if(_0x3d9594&&config['LOGS'])console[_0x128e0a(0x23b)](_0x128e0a(0x1f7)+(_0x230cd9[_0x128e0a(0x246)]['endsWith'](_0x128e0a(0x216))?(await _0x1295bd[_0x128e0a(0x224)](_0x230cd9[_0x128e0a(0x246)]))[_0x128e0a(0x20b)]:_0x230cd9[_0x128e0a(0x246)])+_0x128e0a(0x1f0)+_0x230cd9[_0x128e0a(0x238)]+'\x0aMessage:'+_0x3d9594+_0x128e0a(0x23f)+_0x230cd9['sudo'][_0x128e0a(0x249)](_0x52bd13));events[_0x128e0a(0x1ef)]['map'](async _0x559333=>{const _0x32b354=_0x128e0a;if(_0x559333['fromMe']&&!_0x230cd9[_0x32b354(0x1fa)][_0x32b354(0x249)](_0x52bd13))return;let _0x2d719f=config['HANDLERS'][_0x32b354(0x217)](),_0x51d93e=_0x3d9594;typeof _0x51d93e===_0x32b354(0x247)&&_0x51d93e[_0x32b354(0x232)](_0x2d719f)?_0x51d93e=_0x51d93e:_0x51d93e=![];_0x230cd9[_0x32b354(0x200)]=_0x2d719f;let _0x1c1777;switch(!![]){case _0x559333[_0x32b354(0x212)]&&_0x559333[_0x32b354(0x212)]['test'](_0x51d93e):try{match=_0x3d9594['replace'](new RegExp(_0x559333[_0x32b354(0x212)],'i'),'')[_0x32b354(0x217)]();}catch(_0x37ecaf){match=![];}_0x1c1777=new Message(_0x1295bd,_0x230cd9),_0x559333[_0x32b354(0x23a)](_0x1c1777,match,_0x230cd9,_0x1295bd);break;case _0x3d9594&&_0x559333['on']===_0x32b354(0x235):_0x1c1777=new Message(_0x1295bd,_0x230cd9),_0x559333[_0x32b354(0x23a)](_0x1c1777,_0x3d9594,_0x230cd9,_0x1295bd,_0x402800);break;case _0x559333['on']===_0x32b354(0x213)||_0x559333['on']===_0x32b354(0x244):_0x230cd9[_0x32b354(0x20e)]===_0x32b354(0x221)&&(_0x1c1777=new Image(_0x1295bd,_0x230cd9),_0x559333[_0x32b354(0x23a)](_0x1c1777,_0x3d9594,_0x230cd9,_0x1295bd,_0x402800));break;case _0x559333['on']===_0x32b354(0x21f):_0x230cd9[_0x32b354(0x20e)]==='stickerMessage'&&(_0x1c1777=new Sticker(_0x1295bd,_0x230cd9),_0x559333['function'](_0x1c1777,_0x230cd9,_0x1295bd,_0x402800));break;case _0x559333['on']===_0x32b354(0x1f8):_0x230cd9[_0x32b354(0x20e)]===_0x32b354(0x207)&&(_0x1c1777=new Video(_0x1295bd,_0x230cd9),_0x559333[_0x32b354(0x23a)](_0x1c1777,_0x230cd9,_0x1295bd,_0x402800));break;default:break;}});});}_0x5ee9cf===_0x1a5191(0x225)&&_0x30fa&&_0x30fa['error']&&_0x30fa['error']['output']['statusCode']!==0x191&&Iris();});}app[_0x1f459f(0x22b)]('/',(_0x155675,_0x51c7ef)=>_0x51c7ef[_0x1f459f(0x20e)]('html')[_0x1f459f(0x1f5)](_0x1f459f(0x22e))),app['listen'](port,()=>console[_0x1f459f(0x23b)]('Iris\x20Server\x20listening\x20on\x20port\x20http://localhost:'+port+'!')),setTimeout(()=>{Iris();},0x1770);
+const {
+  default: makeWASocket,
+      useMultiFileAuthState,
+      Browsers,
+      makeInMemoryStore
+  } = require("@whiskeysockets/baileys");
+  const path = require("path");
+  const {
+      Image,
+      Message,
+      Sticker,
+      Video
+  } = require("./lib/Messages");
+  let fs = require("fs");
+  let config = require("./config");
+  const pino = require("pino");
+  const port = 3000;
+  logger = pino({
+      level: "silent"
+  });
+  const {
+      serialize,
+      Greetings
+  } = require("./lib");
+  const events = require("./lib/events");
+  const express = require("express");
+  const app = express();
+  const store = makeInMemoryStore({
+   logger: pino().child({ level: "silent", stream: "store" }),
+   });
+
+
+
+ const {
+      MakeSession
+  } = require("./lib/session");
+  if (!fs.existsSync("./resources/auth/creds.json")) {
+      MakeSession(config.SESSION_ID, "./resources/auth/creds.json").then(
+          console.log("Vesrion : " + require("./package.json").version)
+      );
+  }
+  fs.readdirSync(__dirname + "/resources/database/").forEach((db) => {
+      if (path.extname(db).toLowerCase() == ".js") {
+          require(__dirname + "/resources/database/" + db);
+      }
+  });
+  async function Iris() {
+      const {
+          state, saveCreds
+      } = await useMultiFileAuthState(
+          __dirname + "/resources/auth"
+      );
+      let conn = makeWASocket({
+          auth: state,
+          printQRInTerminal: true,
+          logger: pino({
+              level: "silent"
+          }),
+          browser: Browsers.macOS("Desktop"),
+          downloadHistory: false,
+          syncFullHistory: false,
+      });
+
+
+         /* store.bind(conn.ev);
+           //store.readFromFile("./database/store.json");
+          setInterval(() => {
+          store.writeToFile("./lib/store.json");
+          console.log("saved store");
+          }, 10_000);*/
+      conn.ev.on("connection.update",
+          async (s) => {
+              const {
+                  connection,
+                  lastDisconnect
+              } = s;
+              if (connection === "connecting") {
+                  console.log("X-AsenaDuplicated");
+                  console.log("ℹ️ Connecting to WhatsApp... Please Wait.");
+              }
+              if (connection === "open") {
+                  console.log("✅ Login Successful!");
+                  console.log("Syncing Database");
+                  config.DATABASE.sync();
+                  conn.ev.on("creds.update", saveCreds);
+
+                  console.log("⬇️  Installing Plugins...");
+                  fs.readdirSync(__dirname + "/plugins").forEach((plugin) => {
+                      if (path.extname(plugin).toLowerCase() == ".js") {
+                          require(__dirname + "/plugins/" + plugin);
+                      }
+                  });
+                  console.log("✅ Plugins Installed!");
+
+                  let str = `\`\`\`Iris connected \nversion : ${
+                  require(__dirname + "/package.json").version
+                  }\nTotal Plugins : ${events.commands.length}\nWorktype: ${
+                  config.WORK_TYPE
+                  }\`\`\``;
+                  conn.sendMessage(conn.user.id,
+                      {
+                          text: str
+                      });
+                
+    conn.ev.on("group-participants.update",
+                      async (data) => {
+                          Greetings(data, conn);
+                      });
+                  conn.ev.on("messages.upsert",
+                      async (m) => {
+                          if (m.type !== "notify") return;
+                          let msg = await serialize(
+                              JSON.parse(JSON.stringify(m.messages[0])),
+                              conn
+                          );
+                          if (!msg) return;
+
+                          let su = msg.sender.split("@")[0]
+                          su = su.split(":")[0]
+                          let text_msg = msg.body;
+                          if (text_msg && config.LOGS)
+                              console.log(
+                              `At : ${
+                              msg.from.endsWith("@g.us")
+                              ? (await conn.groupMetadata(msg.from)).subject: msg.from
+                              }\nFrom : ${msg.sender}\nMessage:${text_msg}\nSudo:${msg.sudo.includes(
+                                      su
+                                  )}`
+                          );
+
+                          
+
+                          events.commands.map(async (command) => {
+
+                              if (
+                                  command.fromMe &&
+                                  !msg.sudo.includes(
+                                      su
+                                  )
+                              ) {
+                                  return;
+                              }
+                              let prefix =  config.HANDLERS.trim();
+
+                              let comman = text_msg;
+
+                              if(!comman?.startsWith(prefix)) comman = false;
+
+                              msg.prefix = prefix;
+
+
+                              let whats;
+                              switch (true) {
+
+
+                                  case command.pattern && command.pattern.test(comman):
+
+                                          try{
+                                          match = text_msg
+                                          .replace(new RegExp(command.pattern, "i"), "")
+                                          .trim();
+                                          } catch(e){
+                                          match = false;
+                                           }
+
+                                      whats = new Message(conn, msg);
+                                      command.function(whats, match, msg, conn);
+                                      break;
+
+                                     case text_msg && command.on === "text":
+                                      whats = new Message(conn, msg);
+                                      command.function(whats, text_msg, msg, conn, m);
+                                      break;
+
+                                  case command.on === "image" || command.on === "photo":
+                                      if (msg.type === "imageMessage") {
+                                          whats = new Image(conn, msg);
+                                          command.function(whats, text_msg, msg, conn, m);
+                                      }
+                                      break;
+
+                                  case command.on === "sticker":
+                                      if (msg.type === "stickerMessage") {
+                                          whats = new Sticker(conn, msg);
+                                          command.function(whats, msg, conn, m);
+                                      }
+                                      break;
+                                  case command.on === "video":
+                                      if (msg.type === "videoMessage") {
+                                          whats = new Video(conn, msg);
+                                          command.function(whats, msg, conn, m);
+                                      }
+                                      break;
+
+                                  default:
+                                      break;
+                              }
+                          });
+                      });
+              }
+              if (
+                  connection === "close" &&
+                  lastDisconnect &&
+                  lastDisconnect.error &&
+                  lastDisconnect.error.output.statusCode != 401
+              ) {
+                  Iris();
+              }
+          });
+  };
+
+  app.get("/", (req, res) => res.type('html').send(`<p1>Hello world</p2>`));
+app.listen(port, () => console.log(`Ducky Server listening on port http://localhost:${port}!`));
+  setTimeout(() => {
+      Iris();
+  }, 6000);
