@@ -59,6 +59,8 @@ const {
           browser: Browsers.macOS("Desktop"),
           downloadHistory: false,
           syncFullHistory: false,
+          markOnlineOnConnect: false,
+          emitOwnEvents: true,
       });
 
 
