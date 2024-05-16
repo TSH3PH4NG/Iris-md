@@ -1,4 +1,4 @@
-FROM quay.io/tshephang/test:latest
+FROM quay.io/tshephang/tsp:latest
 LABEL version=1.27
 RUN git clone https://github.com/TSH3PH4NG/Iris-MD.git /root/Iris
 WORKDIR /root/Iris/
