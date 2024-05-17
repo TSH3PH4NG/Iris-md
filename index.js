@@ -9,7 +9,8 @@ const {
       Image,
       Message,
       Sticker,
-      Video
+      Video,
+      All
   } = require("./lib/Messages");
   let fs = require("fs");
   let config = require("./config");
@@ -190,6 +191,11 @@ const {
                                           command.function(whats, msg, conn, m);
                                       }
                                       break;
+                                  case command.on === "all":
+                                      
+                                          whats = new All(conn, msg);
+                                          command.function(whats, msg, conn, m);
+                                  break;
 
                                   default:
                                       break;
