@@ -15,7 +15,7 @@ const {
   let fs = require("fs");
   let config = require("./config");
   const pino = require("pino");
-  const port = 3000;
+  const port = config.PORT;
   logger = pino({
       level: "silent"
   });
