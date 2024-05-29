@@ -12,8 +12,8 @@ type : "music",
  },
  
  async (message, match, m) => {
- if (!m.quoted.message.videoMessage && !m.quoted.message.audioMessage)
-      return await message.sendMessage("*Need Video! Or Audio*");
+ if (!message.reply_message.message.videoMessage && !message.reply_message.message.audioMessage)
+      return await message.sendMessage("*Need Video! Or Audio*", {quoted: m});
 	
  let buff = await m.quoted.download()
 try{
