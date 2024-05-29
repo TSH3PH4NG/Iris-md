@@ -72,7 +72,7 @@ const {
                   lastDisconnect
               } = s;
               if (connection === "connecting") {
-                  console.log("X-AsenaDuplicated");
+                  console.log("Iris-md");
                   console.log("ℹ️ Connecting to WhatsApp... Please Wait.");
               }
               if (connection === "open") {
@@ -218,4 +218,4 @@ const {
 app.listen(port, () => console.log(` Server listening on port http://localhost:${port}!`));
   setTimeout(() => {
       Iris();
-  }, 6000);
+  }, 3000);
