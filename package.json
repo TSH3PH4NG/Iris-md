@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TSH3PH4NG/tsp.git"
+    "url": "git+https://github.com/TSH3PH4NG/Iris.git"
   },
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
