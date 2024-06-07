@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TSH3PH4NG/Iris.git"
+    "url": "git+https://github.com/TSH3PH4NG/Iris-md.git"
   },
   "dependencies": {
     "@adiwajshing/keyed-db": "^0.2.4",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@hapi/boom": "^10.0.1",
-    "@whiskeysockets/baileys": "git+https://github.com/WhiskeySockets/Baileys.git",
+    "@whiskeysockets/baileys": "git+https://github.com/TSH3PH4NG/Iris.git",
     "acrcloud": "^1.4.0",
     "dotenv": "^16.3.1",
     "express": "latest",
