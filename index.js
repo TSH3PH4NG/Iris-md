@@ -192,9 +192,10 @@ const {
                                       }
                                       break;
                                   case command.on === "all":
-                                      
+                                      if(msg){
                                           whats = new All(conn, msg);
                                           command.function(whats, msg, conn, m);
+                                      }
                                   break;
 
                                   default:
