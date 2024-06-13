@@ -152,9 +152,9 @@ const {
 
 
                             if(config.ALWAYS_ONLINE == "true"){
-                              conn.sendPresenceUpate("available",msg.from)
+                              conn.sendPresenceUpdate("available",msg.from)
                             }else{
-                              conn.sendPresenceUpate("unavailable",msg.from)
+                              conn.sendPresenceUpdate("unavailable",msg.from)
                             };
                             
                           
