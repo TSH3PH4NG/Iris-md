@@ -43,7 +43,7 @@ let im = await getBuffer(bestThumbnail.url)
 ┃ 
 ╰━━━━━━━━━━━──⊷`
 
- 	return await message.client.sendMessage(message.jid, {image: im, caption: text}, {quoted: message})
+ 	return await message.client.sendMessage(message.jid, {image: im, caption: text}, {quoted: m})
  }catch(e){
 message.reply(e)
 }
@@ -64,10 +64,9 @@ try{
 let final = m.quoted.message.imageMessage.caption.split("┠ ")[1] 
 final = final.replace("𝑡𝑖𝑡𝑙𝑒 :", "")
 let title = final;
-await message.client.sendMessage(message.jid, {text: `_downloading:_ ${title}`},{quoted: m})
 let data = await getSong(title);
 
-await message.client.sendMessage(message.jid , {audio: data , mimetype: "audio/mpeg"})
+await message.client.sendMessage(message.jid , {audio: data , mimetype: "audio/mpeg"} ,{quoted: m})
 
 }catch(e){
 return e
