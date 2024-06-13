@@ -148,6 +148,20 @@ const {
       
                               msg.prefix = prefix;
 
+                            /*presence handling below*/
+
+
+                            if(config.ALWAYS_ONLINE == "true"){
+                              conn.sendPresenceUpate("available",msg.from)
+                            }else{
+                              conn.sendPresenceUpate("unavailable",msg.from)
+                            };
+                            
+                          
+
+
+                            /*Presence end*/
+
 
                               let whats;
                               switch (true) {
