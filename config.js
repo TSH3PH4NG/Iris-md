@@ -15,6 +15,7 @@ const DATABASE_URL = process.env.DATABASE_URL || './resources/database.db';
 
 module.exports = {
     ANTILINK: toBool(process.env.ANTI_LINK) || false,
+    ALWAYS_ONLINE: toBool(process.env.ALWAYS_ONLINE) || false,
     LOGS: toBool(process.env.LOGS) || true,
     ANTILINK_ACTION: process.env.ANTI_LINK || 'kick',
     SESSION_ID: process.env.SESSION_ID || '',
