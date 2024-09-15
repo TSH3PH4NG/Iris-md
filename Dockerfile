@@ -1,5 +1,5 @@
 FROM quay.io/tshephang/test:latest
-LABEL version = 1.67
+LABEL version = 1.68
 RUN git clone https://github.com/TSH3PH4NG/Iris-md.git /root/Iris-md
 WORKDIR /root/Iris-md/
 RUN yarn install --network-concurrency 1
