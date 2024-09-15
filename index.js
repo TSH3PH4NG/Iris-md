@@ -48,16 +48,14 @@ const {
   async function Iris() {
       const {
           state, saveCreds
-      } = await useMultiFileAuthState(
-          __dirname + "/resources/auth"
-      );
+      } = await useMultiFileAuthState(`./resources/auth/`);
       let conn = makeWASocket({
           auth: state,
           printQRInTerminal: true,
           logger: pino({
               level: "silent"
           }),
-          browser: Browsers.macOS("Desktop"),
+          browser: Browsers.ubuntu("Chrome"),
           downloadHistory: false,
           syncFullHistory: false,
           markOnlineOnConnect: false,
