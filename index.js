@@ -63,6 +63,7 @@ const {
       });
 
 
+      conn.ev.on("creds.update", saveCreds)
       conn.ev.on("connection.update",
           async (s) => {
               const {
@@ -77,7 +78,7 @@ const {
                   console.log("✅ Login Successful!");
                   console.log("Syncing Database");
                   config.DATABASE.sync();
-                  conn.ev.on("creds.update", saveCreds);
+                  
 
                   console.log("⬇️  Installing Plugins...");
                   fs.readdirSync(__dirname + "/plugins").forEach((plugin) => {
