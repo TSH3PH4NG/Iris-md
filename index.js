@@ -71,7 +71,7 @@ const {
               } = s;
               if (connection === "connecting") {
                   console.log("Iris-md");
-                  console.log("ℹ️ Connecting to WhatsApp... Please Wait.");
+                  console.log("Connecting to WhatsApp... Please Wait.");
               }
               if (connection === "open") {
                   console.log("✅ Login Successful!");
