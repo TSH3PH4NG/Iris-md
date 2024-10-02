@@ -1,11 +1,11 @@
 {
   "name": "iris-md",
   "version": "3.0.0",
-  "description": "WhatsApp Bot",
+  "description": "WhatsApp-Bot-MD",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start . --attach --namespace Iris --name Iris",
-    "stop": "pm2 stop Iris"
+    "start": "pm2 start . --attach --namespace Iris_2 --name Iris_2",
+    "stop": "pm2 stop Iris_2"
   },
   "repository": {
     "type": "git",
@@ -35,7 +35,6 @@
     "sequelize": "^6.23.0",
     "sharp": "^0.30.7",
     "sqlite3": "^5.1.6",
-    "truecallerjs": "^2.2.0",
     "youtubei.js": "6.4.1",
     "ytsr": "^3.8.4"
   }
