@@ -102,6 +102,24 @@ const {
                       async (data) => {
                           Greetings(data, conn);
                       });
+                 if(config.CALL_REJECT == true){
+                   conn.ev.on("call", async(c)=>{
+
+                   c = c.map(c=>c)
+                   c = c[0]
+                   let {status, from , id} = c
+
+
+                    if(status == "offer"){
+
+                    await conn.rejectCall(id,from);
+                    return conn.sendMessage(from, {text: "NUMBER UNDER ARTIFICIAL INTELLIGENCE, NO 📞"});
+
+               }
+
+                    });
+               };/*end of if statement*/
+                
                   conn.ev.on("messages.upsert",
                       async (m) => {
                           if (m.type !== "notify") return;
@@ -156,6 +174,7 @@ const {
                               conn.sendPresenceUpdate("unavailable",msg.from)
                             };
                             
+
                           
 
 
