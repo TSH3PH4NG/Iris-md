@@ -66,7 +66,7 @@ final = final.replace("𝑡𝑖𝑡𝑙𝑒 :", "")
 let title = final;
 let data = await getData(title);
 
-await message.client.sendMessage(message.jid , {audio: data , mimetype: "audio/mpeg"} ,{quoted: m})
+return await message.client.sendMessage(message.jid , {audio: data , mimetype: "audio/mpeg"} ,{quoted: m})
 
 }catch(e){
 return e
