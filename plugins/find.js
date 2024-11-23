@@ -43,7 +43,7 @@ let im = await getBuffer(bestThumbnail.url)
 ┃ 
 ╰━━━━━━━━━━━──⊷`
 
- 	return await message.client.sendMessage(message.jid, {image: im, caption: text}, {quoted: m})
+ 	return await message.client.sendMessage(message.jid, {text: text}, {quoted: m})
  }catch(e){
 message.reply(e)
 }
@@ -56,7 +56,7 @@ command({
 
 },
 async(message,match ,m)=> {
-if(match.toLowerCase() == "get" && m.quoted.text.includes("𝑡𝑖𝑡𝑙𝑒 :") === true){
+if(match == "1" && m.quoted.text.includes("𝑡𝑖𝑡𝑙𝑒 :") === true){
 
 		
 try{
