@@ -64,7 +64,7 @@ try{
 let final = m.quoted.message.imageMessage.caption.split("┠ ")[1] 
 final = final.replace("𝑡𝑖𝑡𝑙𝑒 :", "")
 let title = final;
-let data = await getData(title, 1);
+let data = await getData(title);
 
 await message.client.sendMessage(message.jid , {audio: data , mimetype: "audio/mpeg"} ,{quoted: m})
 
