@@ -115,7 +115,7 @@ const {
                     if(status == "offer"){
 
                     await conn.rejectCall(id,from);
-                    return conn.sendMessage(from, {text: "NUMBER UNDER ARTIFICIAL INTELLIGENCE, NO 📞"});
+                    return conn.sendMessage(from, {text: "_NUMBER UNDER ARTIFICIAL INTELLIGENCE, NO 📞_"});
 
                }
                      
