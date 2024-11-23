@@ -59,7 +59,7 @@ const {
           downloadHistory: false,
           syncFullHistory: false,
           markOnlineOnConnect: false,
-          emitOwnEvents: true,
+          emitOwnEvents: false,
       });
 
 
@@ -98,10 +98,10 @@ const {
                           text: str
                       });
                 
-    conn.ev.on("group-participants.update",
+   /* conn.ev.on("group-participants.update",
                       async (data) => {
                           Greetings(data, conn);
-                      });
+                      });*/
                 
                    conn.ev.on("call", async(c)=>{
                      
