@@ -102,9 +102,11 @@ const {
                       async (data) => {
                           Greetings(data, conn);
                       });
-                 if(config.CALL_REJECT == true){
+                
                    conn.ev.on("call", async(c)=>{
-
+                     
+                   if(config.CALL_REJECT == true){
+                     
                    c = c.map(c=>c)
                    c = c[0]
                    let {status, from , id} = c
@@ -116,9 +118,10 @@ const {
                     return conn.sendMessage(from, {text: "NUMBER UNDER ARTIFICIAL INTELLIGENCE, NO 📞"});
 
                }
-
+                     
+           };/*end of if statement*/
                     });
-               };/*end of if statement*/
+              
                 
                   conn.ev.on("messages.upsert",
                       async (m) => {
