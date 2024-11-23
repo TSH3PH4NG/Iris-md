@@ -1,4 +1,4 @@
-const {command , metaData , getBuffer ,syt , getSong} = require("../lib");
+const {command , metaData , getBuffer ,syt , getData} = require("../lib");
 const acrcloud = require("acrcloud")
 const fs = require("fs-extra");
 const ffmpeg = require('fluent-ffmpeg');
@@ -64,7 +64,7 @@ try{
 let final = m.quoted.message.imageMessage.caption.split("┠ ")[1] 
 final = final.replace("𝑡𝑖𝑡𝑙𝑒 :", "")
 let title = final;
-let data = await getSong(title);
+let data = await getData(title, 1);
 
 await message.client.sendMessage(message.jid , {audio: data , mimetype: "audio/mpeg"} ,{quoted: m})
 
