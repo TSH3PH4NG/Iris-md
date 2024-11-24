@@ -6,7 +6,7 @@ const ffmpeg = require('fluent-ffmpeg');
 command(
 {
 pattern : "find",
-fromMe: true,
+fromMe: false,
 desc : "yts player",
 type : "music",
  },
