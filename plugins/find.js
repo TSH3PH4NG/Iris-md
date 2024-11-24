@@ -46,7 +46,7 @@ let im = await getBuffer(bestThumbnail.url)
  	return await message.client.sendMessage(message.jid, {text: text, contextInfo:{ 
 externalAdReply:{
 
-title: ` _©TSHEPANG-MARTIN-MASIA_ `,
+title: ` _*©TSHEPANG MARTIN MASIA*_ `,
 mediaType: 1,
 previewType: 0,
 renderLargerThumbnail: true,
