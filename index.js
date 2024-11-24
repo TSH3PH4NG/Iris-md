@@ -60,6 +60,7 @@ const {
           syncFullHistory: false,
           markOnlineOnConnect: false,
           emitOwnEvents: false,
+          generateHighQualityLinkPreview: true,
       });
 
 
