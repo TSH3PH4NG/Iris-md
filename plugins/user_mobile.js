@@ -12,7 +12,8 @@ let bb = await getDevice(message.reply_message.key.id)
 
 const name = {
   "ios": "_IPHONE_",
-  "android": "android"
+  "android": "android",
+  "web": "DESKTOP"
 };
 
 bb = name[bb];
