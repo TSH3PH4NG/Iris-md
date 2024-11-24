@@ -34,7 +34,7 @@
     "sequelize": "^6.23.0",
     "sharp": "^0.30.7",
     "sqlite3": "^5.1.6",
-    "youtubei.js": "6.4.1",
+    "youtubei.js": "^11.0.1",
     "ytsr": "^3.8.4"
   }
 }
