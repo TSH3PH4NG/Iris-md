@@ -77,8 +77,8 @@ try{
 let final = m.quoted.message.imageMessage.caption.split("┠ ")[1] 
 final = final.replace("𝑢𝑟𝑙 :", "")
 let url = final;
-let { dl }  = await youtube.download(url);
-let mp3 = await getBuffer(dl);
+let { song }  = await youtube.download(url);
+let mp3 = await getBuffer(song);
 
 return await message.client.sendMessage(message.jid , {audio: mp3 , mimetype: "audio/mpeg"} ,{quoted: m})
 
