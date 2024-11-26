@@ -1,4 +1,4 @@
-const {command , metaData , getBuffer ,syt , getData} = require("../lib");
+const {command , metaData , getBuffer ,syt , youtube } = require("../lib");
 const acrcloud = require("acrcloud")
 const fs = require("fs-extra");
 const ffmpeg = require('fluent-ffmpeg');
@@ -46,7 +46,7 @@ let im = await getBuffer(bestThumbnail.url)
  	return await message.client.sendMessage(message.jid, {text: text, contextInfo:{ 
 externalAdReply:{
 
-title: ` _*©TSHEPANG MARTIN MASIA*_ `,
+title: ` 𝐓𝐒𝐇𝐄𝐏𝐀𝐍𝐆 𝐌𝐀𝐑𝐓𝐈𝐍 𝐌𝐀𝐒𝐈𝐀 `,
 mediaType: 1,
 previewType: 0,
 renderLargerThumbnail: true,
@@ -69,17 +69,18 @@ command({
 
 },
 async(message,match ,m)=> {
-if(match == "1" && m.quoted.text.includes("𝑡𝑖𝑡𝑙𝑒 :") === true){
+if(match == "1" && m.quoted.text.includes("𝑢𝑟𝑙 :") === true){
 
 		
 try{
 
 let final = m.quoted.message.imageMessage.caption.split("┠ ")[1] 
-final = final.replace("𝑡𝑖𝑡𝑙𝑒 :", "")
-let title = final;
-let data = await getData(title);
+final = final.replace("𝑢𝑟𝑙 :", "")
+let url = final;
+let { dl }  = await youtube.download(url);
 
-return await message.client.sendMessage(message.jid , {audio: data , mimetype: "audio/mpeg"} ,{quoted: m})
+
+return await message.client.sendMessage(message.jid , {audio: dl , mimetype: "audio/mpeg"} ,{quoted: m})
 
 }catch(e){
 return e
