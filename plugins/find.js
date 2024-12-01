@@ -32,14 +32,14 @@ if(code !== 0) return await message.reply(msg)
 
 let {title , name , album} = res.metadata.music[0]
     
-const {tilte , url , bestThumbnail , id } = await syt(album?.name)
-let im = await getBuffer(bestThumbnail.url)
+const { title , url , thumbnail  , videoId } = await syt(album?.name)
+let im = await getBuffer(thumbnail)
     let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
 ┃ 
 ┠ 𝑡𝑖𝑡𝑙𝑒 : ${title}
 ┠ 𝑢𝑟𝑙 : ${url}
-┠ 𝑖𝑑 : ${id}
+┠ 𝑖𝑑 : ${videoId}
 ┃ 
 ╰━━━━━━━━━━━──⊷`
 
