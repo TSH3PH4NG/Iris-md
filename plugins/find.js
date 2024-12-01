@@ -32,7 +32,7 @@ if(code !== 0) return await message.reply(msg)
 
 let { name , album } = res.metadata.music[0]
     
-const { title , url , thumbnail  , videoId } = await syt(album?.name)
+let { title , url , thumbnail  , videoId } = await syt(album?.name)
 let im = await getBuffer(thumbnail)
     let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
