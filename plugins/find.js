@@ -30,7 +30,7 @@ let res = await acr.identify(buff)
 let {code , msg}  = res.status
 if(code !== 0) return await message.reply(msg)
 
-let {title , name , album} = res.metadata.music[0]
+let { name , album } = res.metadata.music[0]
     
 const { title , url , thumbnail  , videoId } = await syt(album?.name)
 let im = await getBuffer(thumbnail)
