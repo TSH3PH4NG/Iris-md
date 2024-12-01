@@ -8,10 +8,10 @@ async(message,match, m)=>{
 if(!match) return message.client.sendMessage(message.jid , {text: "i need a query"}, {quoted: m})
 
 
-let { url } = await syt(match);
+let { url } = await syt(match,3);
 let  { song } = await youtube.download(url);
 if(song == undefined || song.length <= 9){
- let decoy = await syt(match,1);
+ let decoy = await syt(match,2);
  song  = await youtube.download(decoy.url);
 }
 let buff = await getBuffer(song);
