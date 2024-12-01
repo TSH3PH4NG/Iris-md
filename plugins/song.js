@@ -22,8 +22,8 @@ try{
 return await message.client.sendMessage(message.jid, {audio: buff , mimetype: "audio/mpeg"}, {quoted: m})
 }catch(e){
  await message.client.sendMessage(message.jid, {text: 
-`failed
- error: ${e}
+`_failed
+ error: ${e}_
 `}, {quoted: m})
 }
 
