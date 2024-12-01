@@ -17,10 +17,9 @@ let buff = await getBuffer(song);
 try{
 return await message.client.sendMessage(message.jid, {audio: buff , mimetype: "audio/mpeg"}, {quoted: m})
 }catch(e){
-return await message.client.sendMessage(message.jid, {text: 
-`failed , try again
-error: ${e}
-`}, {quoted: m})
+ await message.client.sendMessage(message.jid, {text: 
+`failed , please wait the bot is expanding the search`}, {quoted: m})
+return await message.client.sendMessage(message.jid, {audio: buff , mimetype: "audio/mpeg"}, {quoted: m})
 }
 
 })
