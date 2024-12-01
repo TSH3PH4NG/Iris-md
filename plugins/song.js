@@ -10,7 +10,7 @@ if(!match) return message.client.sendMessage(message.jid , {text: "i need a quer
 
 let { url } = await syt(match);
 let  { song } = await youtube.download(url);
-if(song == undefined || song.length >= 9){
+if(song == undefined || song.length <= 9){
  let decoy = await syt(match,1);
  song  = await youtube.download(decoy.url);
 }
