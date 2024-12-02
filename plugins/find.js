@@ -32,7 +32,7 @@ if(code !== 0) return await message.reply(msg)
 
 let { name , album } = res.metadata.music[0]
     
-let { title , url , thumbnail  , videoId } = await syt(album?.name)
+let { title , url , thumbnail  , videoId } = await syt(album?.name,2)
 let im = await getBuffer(thumbnail)
     let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
@@ -69,15 +69,15 @@ command({
 
 },
 async(message,match ,m)=> {
-if(match == "1" && m.quoted.text.includes("𝑢𝑟𝑙 :") === true){
+if(match == "1" && m.quoted.text.includes("𝑢𝑟𝑙 :") == true){
 
 		
 try{
 
 let final = m.quoted.message.imageMessage.caption.split("┠ ")[1] 
 final = final.replace("𝑢𝑟𝑙 :", "")
-let url = final;
-let { song }  = await youtube.download(url);
+let ur_l = final;
+let { song }  = await youtube.download(ur_l);
 let mp3 = await getBuffer(song);
 
 return await message.client.sendMessage(message.jid , {audio: mp3 , mimetype: "audio/mpeg"} ,{quoted: m})
