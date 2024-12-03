@@ -92,7 +92,7 @@ async function Iris() {
 			}
 
 		} /*end of if statement*/
-		else {
+		else if(config.CALL_REJECT == false) {
 			return
 		} //end
 	});
