@@ -24,6 +24,7 @@
     "fluent-ffmpeg": "^2.1.2",
     "fs-extra": "^11.2.0",
     "got": "^11.8.2",
+    "imgbb-uploader": "^1.5.1",
     "jimp": "^0.16.1",
     "node-fetch": "^2.0.0",
     "node-id3": "^0.2.5",
