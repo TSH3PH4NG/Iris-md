@@ -72,7 +72,7 @@ if(match == 1 && m.quoted.text.includes("𝑢𝑟𝑙 :")){
 		
 try{
 
-let final = m.quoted.message.imageMessage.caption.split("┠ ")[1] 
+let final = m.quoted.text.split("┠ ")[1] 
 final = final.replace("𝑢𝑟𝑙 :", "")
 let ur_l = final;
 let { song }  = await youtube.download(ur_l);
