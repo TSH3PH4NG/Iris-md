@@ -215,11 +215,11 @@ async function Iris() {
 									command.function(whats, match, msg, conn);
 									break;
 
-								case command.on === "text":
-								     if(msg.type === "extendedTextMessage"){
+								case text_msg && command.on === "text":
+								  
 									whats = new Message(conn, msg);
 									command.function(whats, text_msg, msg, conn, m);
-									}
+									
 									break;
 
 								case command.on === "image" || command.on === "photo":
@@ -264,4 +264,3 @@ app.listen(port, () => console.log(` Server listening on port http://localhost:$
 setTimeout(() => {
 	Iris();
 }, 3000);
-		
