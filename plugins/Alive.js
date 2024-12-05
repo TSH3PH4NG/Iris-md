@@ -1,4 +1,4 @@
-const {command} = require("../lib");
+const { command } = require("../lib");
 
 command({
   pattern:"alive",
@@ -6,6 +6,6 @@ command({
   desc: "test alive"
 },
 async(message, m,match)=>{
-return message.client.sendMessage(message.jid, {text: `*hello ${message.pushName} all systems are functional*`}, { quoted: m })
+return message.reply(`*hello ${message.pushName} all systems are functional*`)
   
 })
