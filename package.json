@@ -1,7 +1,7 @@
 {
   "name": "iris-md",
   "version": "4.0.1",
-  "description": "WhatsApp-Bot-MD",
+  "description": "void",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start . --attach --namespace Iris_2 --name Iris_2",
