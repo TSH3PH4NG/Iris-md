@@ -215,9 +215,11 @@ async function Iris() {
 									command.function(whats, match, msg, conn);
 									break;
 
-								case text_msg && command.on === "text":
+								case command.on === "text":
+								     if(msg.type === "extendedTextMessage"){
 									whats = new Message(conn, msg);
 									command.function(whats, text_msg, msg, conn, m);
+									}
 									break;
 
 								case command.on === "image" || command.on === "photo":
@@ -236,12 +238,6 @@ async function Iris() {
 								case command.on === "video":
 									if (msg.type === "videoMessage") {
 										whats = new Video(conn, msg);
-										command.function(whats, msg, conn, m);
-									}
-									break;
-								case command.on === "all":
-									if (msg) {
-										whats = new All(conn, msg);
 										command.function(whats, msg, conn, m);
 									}
 									break;
@@ -268,3 +264,4 @@ app.listen(port, () => console.log(` Server listening on port http://localhost:$
 setTimeout(() => {
 	Iris();
 }, 3000);
+		
