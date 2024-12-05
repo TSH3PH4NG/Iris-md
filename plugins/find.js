@@ -65,12 +65,10 @@ message.reply(e)
 
 command({
  on: "text",
- fromMe: false
-
+ fromMe: true
 },
 async(message,match ,m)=> {
-if(match == "1" && m.quoted.text.includes("𝑢𝑟𝑙 :") == true){
-
+if(match == 1 && m.quoted.text.includes("𝑢𝑟𝑙 :")){
 		
 try{
 
@@ -79,8 +77,8 @@ final = final.replace("𝑢𝑟𝑙 :", "")
 let ur_l = final;
 let { song }  = await youtube.download(ur_l);
 let mp3 = await getBuffer(song);
-
-return await message.client.sendMessage(message.jid , {audio: mp3 , mimetype: "audio/mpeg"} ,{quoted: m})
+	
+await message.client.sendMessage(message.jid , {audio: mp3 , mimetype: "audio/mpeg"} ,{quoted: m})
 
 }catch(e){
 return e
