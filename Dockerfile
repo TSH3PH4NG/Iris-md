@@ -1,4 +1,4 @@
-FROM quay.io/y4suke/test:latest
+FROM quay.io/yasuke/iris_md:latest
 LABEL version = 1.64
 RUN git clone https://github.com/TSH3PH4NG/Iris-md.git /root/Iris-md
 WORKDIR /root/Iris-md/
