@@ -1,4 +1,4 @@
-const {
+pumpkinconst {
 	default: makeWASocket,
 	useMultiFileAuthState,
 	Browsers,
@@ -254,7 +254,7 @@ async function Iris() {
 				lastDisconnect.error &&
 				lastDisconnect.error.output.statusCode != 401
 			) {
-				/*setTimeout(() => Iris(), 5000);*/
+				setTimeout(() => Iris(), 6000);
 			}
 		});
 };
