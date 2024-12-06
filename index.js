@@ -254,7 +254,7 @@ async function Iris() {
 				lastDisconnect.error &&
 				lastDisconnect.error.output.statusCode != 401
 			) {
-				Iris();
+				setTimeout(() => Iris(), 5000);
 			}
 		});
 };
