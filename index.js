@@ -1,4 +1,4 @@
-pumpkinconst {
+const {
 	default: makeWASocket,
 	useMultiFileAuthState,
 	Browsers,
