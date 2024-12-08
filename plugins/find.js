@@ -69,12 +69,12 @@ command({
  fromMe: true
 },
 async(message,match ,m)=> {
-if(match == 1 && m.quoted.text.includes("𝑢𝑟𝑙 :")){
+if(match == 1 && m.quoted.text.includes("url")){
 		
 try{
 
 let final = m.quoted.text.split("┠ ")[2] 
-final = final.replace("𝑢𝑟𝑙 :", "")
+final = final.replace("url:", "")
 let ur_l = final;
 let { song }  = await youtube.download(ur_l);
 let mp3 = await getBuffer(song);
