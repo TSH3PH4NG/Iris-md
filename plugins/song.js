@@ -1,4 +1,4 @@
-const { syt , youtube , getBuffer , command }  = require("../lib");
+const { command , youtube , getBuffer , yts }  = require("../lib");
 
 command({
 pattern: "song",
@@ -8,7 +8,7 @@ async(message,match, m)=>{
 if(!match) return message.client.sendMessage(message.jid , {text: "i need a query"}, {quoted: m})
 
 
-let { url } = await syt(match,1);
+let { url } = await yts(match);
 let  { song } = await youtube.download(url);
 let buff = await getBuffer(song);
 
