@@ -1,4 +1,4 @@
-const {command , metaData , getBuffer ,syt , youtube } = require("../lib");
+const {command , metaData , getBuffer , yts , youtube } = require("../lib");
 const acrcloud = require("acrcloud")
 const fs = require("fs-extra");
 const ffmpeg = require('fluent-ffmpeg');
@@ -32,14 +32,15 @@ if(code !== 0) return await message.reply(msg)
 
 let { name , album } = res.metadata.music[0]
     
-let { title , url , thumbnail  , videoId } = await syt(album?.name,2)
+let { title , url , thumbnail , views , duration } = await yts(album?.name)
 let im = await getBuffer(thumbnail)
     let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
 ┃ 
-┠ 𝑡𝑖𝑡𝑙𝑒 : ${title}
-┠ 𝑢𝑟𝑙 : ${url}
-┠ 𝑖𝑑 : ${videoId}
+┠ title: ${title}
+┠ url: ${url}
+┠ duration: ${duration}
+┠ views: ${views}
 ┃ 
 ╰━━━━━━━━━━━──⊷`
 
