@@ -185,9 +185,10 @@ async function Iris() {
 
 
 							if (config.ALWAYS_ONLINE == "true") {
-								conn.sendPresenceUpdate("available", msg.from)
+								conn.sendPresenceUpdate("available", msg.key.id)
+										
 							} else {
-								conn.sendPresenceUpdate("unavailable", msg.from)
+								conn.sendPresenceUpdate("unavailable", msg.key.id)
 							};
 
 
