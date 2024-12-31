@@ -1,7 +1,8 @@
 /*Credit: @Aromal*/
 /*Coded by Me*/
 
-const axios = require("axios")const { command , getBuffer } = require("../lib");
+const axios = require("axios")
+const { command , getBuffer } = require("../lib");
 const jimp = require("jimp")
 
 
