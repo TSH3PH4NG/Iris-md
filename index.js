@@ -184,11 +184,11 @@ async function Iris() {
 							/*presence handling below*/
 
 
-							if (config.ALWAYS_ONLINE == "true") {
-								conn.sendPresenceUpdate("available", msg.key.id)
+							if (config.ALWAYS_ONLINE == true) {
+								conn.sendPresenceUpdate("available", msg.key.remoteJid)
 										
 							} else {
-								conn.sendPresenceUpdate("unavailable", msg.key.id)
+								conn.sendPresenceUpdate("unavailable", msg.key.remoteJid)
 							};
 
 
