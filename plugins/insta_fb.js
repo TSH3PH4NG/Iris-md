@@ -20,16 +20,20 @@ let { data } = await axios(`https://enthusiastic-ag-lokiking-524102b4.koyeb.app/
 let { url } = data.result[0]
 
 if(url.includes("jpg")){
+	
 let buffer = await getBuffer(url);
 await message.client.sendMessage(message.jid , { image: buff , caption: "*Instagram image*"}  , {quoted: m})
+
 }
 else{
+	
 let buff = await getBuffer(url);
 
 await message.client.sendMessage(message.jid , {video: buff , mimetype: "video/mp4"}  , {quoted: m})
+
 }/*nested if and else close*/
 
-   }h
+   }
 
 else if(match.includes("www.facebook.com")){
  let { data } = await axios(`https://enthusiastic-ag-lokiking-524102b4.koyeb.app/download/facebook?url=${match}`)
