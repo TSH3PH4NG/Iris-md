@@ -22,13 +22,12 @@ let { url } = data.result[0]
 if(url.includes("jpg")){
 	
 let buffer = await getBuffer(url);
-await message.client.sendMessage(message.jid , { image: buff , caption: "*Instagram image*"}  , {quoted: m})
+await message.client.sendMessage(message.jid , { image: buffer , caption: "*Instagram image*"}  , {quoted: m})
 
 }
 else{
 	
 let buff = await getBuffer(url);
-
 await message.client.sendMessage(message.jid , {video: buff , mimetype: "video/mp4"}  , {quoted: m})
 
 }/*nested if and else close*/
