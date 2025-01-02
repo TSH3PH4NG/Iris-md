@@ -1,4 +1,4 @@
-const { command , getBuffer } = require("../lib");
+const { command , getBuffer , pinterest } = require("../lib");
 
 
 command({
