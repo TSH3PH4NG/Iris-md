@@ -1,4 +1,4 @@
-const { default: makeWASocket, useMultiFileAuthState, Browsers, makeInMemoryStore, delay  , makeCacheableSignalKeyStore } = require("@whiskeysockets/baileys");
+const { default: makeWASocket, useMultiFileAuthState, Browsers, makeInMemoryStore, delay  , makeCacheableSignalKeyStore , DisconnectReason } = require("@whiskeysockets/baileys");
 const path = require("path");
 const fs = require("fs");
 const config = require("./config");
@@ -47,7 +47,7 @@ async function Iris() {
 
   let conn = makeWASocket({
     auth: { creds: state.creds, keys: makeCacheableSignalKeyStore(state.keys, logger) },
-    printQRInTerminal: true,
+    printQRInTerminal: false,
     logger: pino({ level: "silent" }),
     browser: Browsers.ubuntu("Chrome"),
     downloadHistory: false,
@@ -87,6 +87,7 @@ async function Iris() {
         await delay(300);
         Iris();  
         console.log('reconnecting...');
+        console.log(s)
       } else {
         console.log('connection closed');
         await delay(3000);
@@ -172,6 +173,5 @@ async function Iris() {
 
 app.get("/", (req, res) => res.type("html").send(`<p2>Hello world</p2>`));
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}!`));
-
 Iris();
 p();
