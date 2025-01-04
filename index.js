@@ -1,4 +1,4 @@
-const { default: makeWASocket, useMultiFileAuthState, Browsers, makeInMemoryStore, delay } = require("@whiskeysockets/baileys");
+const { default: makeWASocket, useMultiFileAuthState, Browsers, makeInMemoryStore, delay  , makeCacheableSignalKeyStore } = require("@whiskeysockets/baileys");
 const path = require("path");
 const fs = require("fs");
 const config = require("./config");
