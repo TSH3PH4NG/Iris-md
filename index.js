@@ -4,7 +4,7 @@ const fs = require("fs");
 const config = require("./config");
 const pino = require("pino");
 const { Image, Message, Sticker, Video, All } = require("./lib/Messages");
-const { serialize, Greetings } = require("./lib");
+const { serialize, Greetings , parsedJid } = require("./lib");
 const events = require("./lib/events");
 const express = require("express");
 
@@ -66,7 +66,7 @@ async function Iris() {
       let { status, from, id } = c;
       if (status == "offer") {
         await conn.rejectCall(id, from);
-        return conn.sendMessage(from, { text: "_NUMBER UNDER ARTIFICIAL INTELLIGENCE, NO 📞_" });
+        return conn.sendMessage(from, { text: "_NUMBER UNDER ARTIFICIAL INTELLIGENCE, NO ðŸ“ž_" });
       }
     } else if (config.CALL_REJECT === false) {
       return;
@@ -102,9 +102,11 @@ async function Iris() {
     if (m.type !== "notify") return;
     let msg = await serialize(JSON.parse(JSON.stringify(m.messages[0])), conn);
     if (!msg) return;
-
-    let su = msg.sender.split("@")[0];
-    su = su.split(":")[0];
+    
+    if(msg.sender){ 
+    let su = await (parsedJid(msg.sender)[0]).split("@")[0];
+     }//handle 
+     
     let text_msg = msg.body;
     if (text_msg && config.LOGS) {
       console.log(`At : ${msg.from.endsWith("@g.us") ? (await conn.groupMetadata(msg.from)).subject : msg.from}\nFrom : ${msg.sender}\nMessage:${text_msg}\nSudo:${msg.sudo.includes(su)}`);
@@ -116,7 +118,7 @@ async function Iris() {
       let comman = text_msg;
 
       try {
-        if (typeof comman === "string" && !comman.startsWith(prefix)) comman = false;
+        if (typeof comman === "string" && !comman?.startsWith(prefix)) comman = false;
       } catch (e) {
         comman = false;
       }
