@@ -57,7 +57,7 @@ async function Iris() {
     generateHighQualityLinkPreview: true,
   });
 
-  conn.ev.on("creds.update", saveCreds);
+  
 
   conn.ev.on("call", async (c) => {
     if (config.CALL_REJECT === true) {
@@ -77,7 +77,6 @@ async function Iris() {
     const { connection, lastDisconnect } = s;
     if (connection === "open") {
       console.log("Connecting to WhatsApp...");
-      p();
       console.log("connected");
       await delay(5000);
       await conn.sendMessage(conn.user.id, { text: `Bot connected` });
@@ -96,6 +95,8 @@ async function Iris() {
       }
     }
   });
+  
+  conn.ev.on("creds.update", saveCreds);
 
   conn.ev.on("messages.upsert", async (m) => {
     if (m.type !== "notify") return;
@@ -175,3 +176,4 @@ async function Iris() {
 app.get("/", (req, res) => res.type("html").send(`<p2>Hello world</p2>`));
 app.listen(port, () => console.log(`Server listening on port http://localhost:${port}!`));
 Iris();
+p();
