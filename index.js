@@ -103,8 +103,9 @@ async function Iris() {
     let msg = await serialize(JSON.parse(JSON.stringify(m.messages[0])), conn);
     if (!msg) return;
     
-    if(msg.sender){ 
-    let su = await (parsedJid(msg.sender)[0]).split("@")[0];
+    let su;
+    if(msg?.sender){ 
+     su = await (parsedJid(msg?.sender)[0]).split("@")[0];
      }//handle 
      
     let text_msg = msg.body;
