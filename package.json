@@ -1,6 +1,6 @@
 {
   "name": "iris-md",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "description": "void",
   "main": "index.js",
   "scripts": {
@@ -12,10 +12,10 @@
     "url": "git+https://github.com/TSH3PH4NG/Iris-md.git"
   },
   "dependencies": {
+    "@whiskeysockets/baileys": "git+https://github.com/TSH3PH4NG/tsp-js.git",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
-    "@hapi/boom": "^10.0.1",
-    "@whiskeysockets/baileys": "^6.6.0",
+    "@hapi/boom": "^10.0.1",    
     "acrcloud": "^1.4.0",
     "cheerio": "^1.0.0-rc.10",
     "dotenv": "^16.3.1",
