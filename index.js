@@ -103,7 +103,7 @@ async function Iris() {
     let msg = await serialize(JSON.parse(JSON.stringify(m.messages[0])), conn);
     if (!msg) return;
     
-     
+    let su = await (parsedJid(msg?.sender)[0]).split("@")[0];
      
     let text_msg = msg.body;
     if (text_msg && config.LOGS) {
@@ -111,7 +111,7 @@ async function Iris() {
     }
 
     events.commands.map(async (command) => {
-      let su = await (parsedJid(msg?.sender)[0]).split("@")[0];
+     
       if (command.fromMe && !msg.sudo.includes(su)) return;
       let prefix = config.HANDLERS.trim();
       let comman = text_msg;
