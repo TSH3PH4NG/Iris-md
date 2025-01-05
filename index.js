@@ -80,7 +80,7 @@ async function Iris() {
       console.log("Connecting to WhatsApp...");
       console.log("connected");
       await delay(5000);
-      await conn.sendMessage(conn.user.id, { text: `Bot connected` });
+      await conn.sendMessage(conn.user.id, { text: `Iris connected` });
     }
 
     if (connection === "close") {
