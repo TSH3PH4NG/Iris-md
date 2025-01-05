@@ -12,7 +12,7 @@
     "url": "git+https://github.com/TSH3PH4NG/Iris-md.git"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "git+https://github.com/Loki-Xer/Baileys.git",
+    "@whiskeysockets/baileys": "git+https://github.com/TSH3PH4NG/tspjs.git",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@hapi/boom": "^10.0.1",    
