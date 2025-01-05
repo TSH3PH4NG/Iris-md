@@ -55,7 +55,7 @@ async function Iris() {
     markOnlineOnConnect: false,
     emitOwnEvents: false,
     generateHighQualityLinkPreview: true,
-    defaultQueryTimeoutMs: 120000,
+    defaultQueryTimeoutMs: undefined,
   });
 
   
