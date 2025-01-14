@@ -103,6 +103,8 @@ async function Iris() {
     if (m.type !== "notify") return;
     let msg = await serialize(JSON.parse(JSON.stringify(m.messages[0])), conn);
     if (!msg) return;
+
+    if(!msg.sender) return;
     
     let su = await (parsedJid(msg?.sender)[0]).split("@")[0];
      
