@@ -15,13 +15,13 @@ command(
   },
   async (message, match) => {
     if (!match)
-      return await message.sendMessage(message.jid, "_Send a plugin url_");
+      return await message.reply( "_Send a plugin url_");
 
     try {
       var url = new URL(match);
     } catch (e) {
       console.log(e);
-      return await message.sendMessage(message.jid, "_Invalid Url_");
+      return await message.reply( "_Invalid Url_");
     }
 
     if (url.host === "gist.github.com") {
@@ -60,7 +60,7 @@ command(
       }
     } catch (error) {
       console.error(error);
-      return await message.sendMessage(message.jid, "Failed to fetch plugin");
+      return await message.reply( "Failed to fetch plugin");
     }
   }
 );
@@ -71,8 +71,7 @@ command(
     var mesaj = "";
     var plugins = await PluginDB.findAll();
     if (plugins.length < 1) {
-      return await message.sendMessage(
-        message.jid,
+      return await message.reply(
         "_No external plugins installed_"
       );
     } else {
@@ -84,7 +83,7 @@ command(
           plugin.dataValues.url +
           "\n";
       });
-      return await message.sendMessage(message.jid, mesaj);
+      return await message.reply(mesaj);
     }
   }
 );
@@ -98,17 +97,17 @@ command(
   },
   async (message, match) => {
     if (!match)
-      return await message.sendMessage(message.jid, "_Need a plugin name_");
+      return await message.reply( "_Need a plugin name_");
 
     var plugin = await PluginDB.findAll({ where: { name: match } });
 
     if (plugin.length < 1) {
-      return await message.sendMessage(message.jid, "_Plugin not found_");
+      return await message.reply( "_Plugin not found_");
     } else {
       await plugin[0].destroy();
       delete require.cache[require.resolve("./" + match + ".js")];
       fs.unlinkSync(__dirname + "/" + match + ".js");
-      await message.sendMessage(message.jid, `Plugin ${match} deleted`);
+      await message.reply( `Plugin ${match} deleted`);
     }
   }
 );
