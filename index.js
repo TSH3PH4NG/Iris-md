@@ -106,7 +106,7 @@ async function Iris() {
 
     if(!msg.sender) return;
     
-    let su = await (parsedJid(msg?.sender)[0]).split("@")[0];
+    let su = await (await parsedJid(msg?.sender)[0]).split("@")[0];
      
     let text_msg = msg.body;
     if (text_msg && config.LOGS) {
@@ -123,6 +123,8 @@ async function Iris() {
      if (command?.pattern instanceof RegExp && typeof comman == "string") {
     const cmd = msg.body.match(new RegExp(`^${command.pattern.source}`));
     comman = cmd ? cmd[1] : false;
+    console.log(`comman : ${comman}\ncmd: ${cmd} `);
+    
     } else {
      comman = false;
     }
