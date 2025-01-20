@@ -110,7 +110,7 @@ async function Iris() {
      
     let text_msg = msg.body;
     if (text_msg && config.LOGS) {
-      console.log(`At : ${msg.from.endsWith("@g.us") ? (await conn.groupMetadata(msg.from)).subject : msg.from}\nFrom : ${msg.sender}\nMessage:${text_msg}\nSudo:${msg.sudo.includes(su)}`);
+      console.log(`At : ${msg.from.endsWith("@g.us") ? (await conn.groupMetadata(msg.from)).subject : msg.from}\nFrom : ${msg.sender}\nMessage:${text_msg}\nSudo:${msg.sudo.includes(su)} , ${typeof msg.body}`);
     }
 
     events.commands.map(async (command) => {
@@ -120,8 +120,8 @@ async function Iris() {
      
      let comman = text_msg;
 
-     if (command?.pattern instanceof RegExp) {
-    const cmd = text_msg.match(new RegExp(`^${command.pattern.source}`));
+     if (command?.pattern instanceof RegExp && typeof comman == "string") {
+    const cmd = msg.body.match(new RegExp(`^${command.pattern.source}`));
     comman = cmd ? cmd[1] : false;
     } else {
      comman = false;
