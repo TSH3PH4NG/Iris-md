@@ -117,13 +117,17 @@ async function Iris() {
      
       if (command.fromMe && !msg.sudo.includes(su)) return;
       let prefix = config.HANDLERS.trim();
-      let comman = text_msg;
+     
+     let comman = text_msg;
 
-      try {
-        if (typeof comman === "string" && !comman?.startsWith(prefix)) comman = false;
-      } catch (e) {
-        comman = false;
-      }
+     if (command?.pattern instanceof RegExp) {
+     const cmd = text_msg.cmd(new RegExp(`^${command.pattern.source}`));
+     comman = cmd ? cmd[1] : false;
+     } else {
+     comman = false;
+     }
+/*new logic ensures that cmd starts with Cmd to avoid such .bbalive from being ran*/
+
 
       msg.prefix = prefix;
       if (config.ALWAYS_ONLINE === true) {
