@@ -106,7 +106,7 @@ async function Iris() {
 
     let text_msg = msg.body;
     if (text_msg && config.LOGS) {
-      console.log(`At : ${msg.from.endsWith("@g.us") ? (await conn.groupMetadata(msg.from)).subject : msg.from}\nFrom : ${msg.sender}\nMessage:${text_msg}\nSudo:${msg.sudo.includes(su)} , ${typeof msg.body}`);
+      console.log(`At : ${msg.from.endsWith("@g.us") ? (await conn.groupMetadata(msg.from)).subject : msg.from}\nFrom : ${msg.sender}\nMessage:${text_msg}\nSudo:${msg.sudo} , ${typeof msg.body}`);
     }
 
     events.commands.map(async (command) => {
