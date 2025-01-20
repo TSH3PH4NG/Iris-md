@@ -104,10 +104,6 @@ async function Iris() {
     let msg = await serialize(JSON.parse(JSON.stringify(m.messages[0])), conn);
     if (!msg) return;
 
-    if(!msg.sender) return;
-    
-    let su = await (await parsedJid(msg?.sender)[0]).split("@")[0];
-     
     let text_msg = msg.body;
     if (text_msg && config.LOGS) {
       console.log(`At : ${msg.from.endsWith("@g.us") ? (await conn.groupMetadata(msg.from)).subject : msg.from}\nFrom : ${msg.sender}\nMessage:${text_msg}\nSudo:${msg.sudo.includes(su)} , ${typeof msg.body}`);
@@ -115,19 +111,23 @@ async function Iris() {
 
     events.commands.map(async (command) => {
      
-      if (command.fromMe && !msg.sudo.includes(su)) return;
+      if (command.fromMe && !msg.sudo) return;
       let prefix = config.HANDLERS.trim();
      
      let comman = text_msg;
 
-     if (command?.pattern instanceof RegExp && typeof comman == "string") {
-    const cmd = msg.body.match(new RegExp(`^${command.pattern.source}`));
-    comman = cmd ? cmd[1] : false;
-    console.log(`comman : ${comman}\ncmd: ${cmd} `);
-    
+if (command?.pattern instanceof RegExp && typeof comman === "string") {
+    const regex = new RegExp(`^${command.pattern.source}`);
+    const cmd = msg.body.match(regex);
+    if (cmd) {
+        comman = cmd[0];
     } else {
-     comman = false;
+        comman = false;
     }
+} else {
+    comman = false;
+}
+
 
 
 
