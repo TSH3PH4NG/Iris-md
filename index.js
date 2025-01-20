@@ -121,12 +121,12 @@ async function Iris() {
      let comman = text_msg;
 
      if (command?.pattern instanceof RegExp) {
-     const cmd = text_msg.cmd(new RegExp(`^${command.pattern.source}`));
-     comman = cmd ? cmd[1] : false;
-     } else {
+    const cmd = text_msg.match(new RegExp(`^${command.pattern.source}`));
+    comman = cmd ? cmd[1] : false;
+    } else {
      comman = false;
-     }
-/*new logic ensures that cmd starts with Cmd to avoid such .bbalive from being ran*/
+    }
+
 
 
       msg.prefix = prefix;
