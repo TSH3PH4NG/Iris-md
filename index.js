@@ -11,7 +11,7 @@ const path = require("path");
 const fs = require("fs");
 const config = require("./config");
 const pino = require("pino");
-const { Image, Message, Sticker, Video, All } = require("./lib/Messages");
+const { Message } = require("./lib/Messages");
 const { serialize, Greetings, parsedJid } = require("./lib");
 const events = require("./lib/events");
 const express = require("express");
@@ -130,7 +130,8 @@ async function Iris() {
             if (command?.pattern instanceof RegExp && typeof comman === "string") {
                 const regex = new RegExp(`^${command.pattern.source}`);
                 const cmd = msg.body.match(regex);
-                comman = cmd ? cmd[0] : false; /*it's the same as if/else*/
+                comman = cmd ? cmd[1] : false; /*it's the same as if/else*/
+                console.log(cmd)
             } else {
                 comman = false;
             }
@@ -163,21 +164,21 @@ async function Iris() {
 
                 case command.on === "image" || command.on === "photo":
                     if (msg.type === "imageMessage") {
-                        whats = new Image(conn, msg);
+                        whats = new  Message(conn, msg);
                         command.function(whats, text_msg, msg, conn, m);
                     }
                     break;
 
                 case command.on === "sticker":
                     if (msg.type === "stickerMessage") {
-                        whats = new Sticker(conn, msg);
+                        whats = new  Message(conn, msg);
                         command.function(whats, msg, conn, m);
                     }
                     break;
 
                 case command.on === "video":
                     if (msg.type === "videoMessage") {
-                        whats = new Video(conn, msg);
+                        whats = new Message(conn, msg);
                         command.function(whats, msg, conn, m);
                     }
                     break;
