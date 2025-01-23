@@ -17,9 +17,12 @@ let buff = await getBuffer(song);
 try{
 return await message.client.sendMessage(message.jid, {audio: buff , mimetype: "audio/mpeg"}, {quoted: m})
 }catch(e){
+  
 let decoy = await tubis(title);
 let decoydl = await tubidl(decoy[0]?.link);
-return await message.client.sendMessage(message.jid, { audio: { url: decoydl }}, {quoted: m})
+let buffer = await getBuffer(decoydl[0]?.url);
+  
+return await message.client.sendMessage(message.jid, { audio: buffer , mimetype: "audio/mpeg"}, {quoted: m})
 }
 
 })
