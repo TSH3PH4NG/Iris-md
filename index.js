@@ -18,7 +18,7 @@ const express = require("express");
 const app = express();
 const port = config.PORT;
 const EV = require("events");
-EV.setMaxListeners(20);
+EV.setMaxListeners(0);
 
 const store = makeInMemoryStore({
     logger: pino().child({ level: "silent", stream: "store" }),
