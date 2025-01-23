@@ -128,10 +128,9 @@ async function Iris() {
             let comman = text_msg;
 
             if (command?.pattern instanceof RegExp && typeof comman === "string") {
-                const regex = new RegExp(`^${command.pattern.source}`);
-                const cmd = msg.body.match(regex);
-                comman = cmd ? cmd[1] : false; /*it's the same as if/else*/
-                console.log(cmd)
+                const regex = new RegExp(`^${prefix}${command.pattern.source}`);
+                const cmd = text_msg.match(regex);
+                comman = cmd ? cmd[0] : false; /*it's the same as if/else*/
             } else {
                 comman = false;
             }
