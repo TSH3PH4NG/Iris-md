@@ -125,19 +125,23 @@ async function Iris() {
 
         events.commands.map(async (command) => {
             if (command.fromMe && !msg.sudo) return;
+            
+                const prefix = config.HANDLERS.trim();
+                let comman = text_msg;
 
-            let prefix = config.HANDLERS.trim(); // Get the prefix
-let comman = text_msg;
+                lib.commands.forEach((command) => {
+                    if (command?.pattern instanceof RegExp) {
+                        
+                        const regex = new RegExp(command.pattern.source, command.pattern.flags);
+                        const cmd = text_msg.match(regex);
 
-if (command?.pattern instanceof RegExp && typeof comman === "string") {
-  
-  const cmd = msg.body.match(command.pattern);
+                        if (cmd && cmd[0].startsWith(prefix)) {
+                            comman = cmd[1] || false;
+                        }
+                    }
+                });
 
-  comman = cmd && msg.body.trim().startsWith(prefix) ? cmd[1]?.trim() : false;
-} else {
-  comman = false;
-}
-
+            
 
             msg.prefix = prefix;
 
