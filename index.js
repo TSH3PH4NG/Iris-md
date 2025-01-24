@@ -17,6 +17,8 @@ const events = require("./lib/events");
 const express = require("express");
 const app = express();
 const port = config.PORT;
+const EV = require("events");
+EV.setMaxListeners(0);
 
 const store = makeInMemoryStore({
     logger: pino().child({ level: "silent", stream: "store" }),
@@ -130,8 +132,8 @@ async function Iris() {
             if (command?.pattern instanceof RegExp && typeof comman === "string") {
                 const regex = new RegExp(`^${command.pattern.source}`);
                 const cmd = msg.body.match(regex);
-                comman = cmd ? cmd[0] : false; /*it's the same as if/else*/
-                console.log(`text: ${text_msg}\ncmd: ${cmd}\ncomman: ${comman}\ncommand: ${command.pattern}`)
+                comman = cmd && cmd[0]?.startsWith(prefix) ? cmd[0] : false; /*it's the same as if/else*/
+                console.log(`MESSAGE: ${text_msg}\ncmd: ${cmd}\ncomman: ${comman}\ncommand: ${command.pattern}`)
             } else {
                 comman = false;
             }
