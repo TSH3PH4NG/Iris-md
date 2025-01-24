@@ -129,14 +129,12 @@ async function Iris() {
             let prefix = config.HANDLERS.trim();
             let comman = text_msg;
 
-            if (command?.pattern instanceof RegExp && typeof comman === "string") {
-                const regex = new RegExp(`^${prefix}${command.pattern.source}`);
-                const cmd = text_msg.match(regex);
-                comman = comman = cmd && cmd[0]?.startsWith(prefix) ? cmd[1] : false;/*if and else*/
-                console.log(`${comman}\ncmd: ${cmd}`);
-            } else {
-                comman = false;
-            }
+if (command?.pattern instanceof RegExp && typeof comman == "string") {
+    const cmd = msg.body.match(new RegExp(`^${command.pattern.source}`));
+    comman = cmd && cmd[0]?.startsWith(prefix)  ? cmd[1] : false;
+    } else {
+     comman = false;
+    }
 
             msg.prefix = prefix;
 
