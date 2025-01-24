@@ -132,7 +132,8 @@ async function Iris() {
             if (command?.pattern instanceof RegExp && typeof comman === "string") {
                 const regex = new RegExp(`^${prefix}${command.pattern.source}`);
                 const cmd = text_msg.match(regex);
-                comman = comman = cmd && cmd[0].startsWith(prefix) ? cmd[1] : false;/*if and else*/
+                comman = comman = cmd && cmd[0]?.startsWith(prefix) ? cmd[1] : false;/*if and else*/
+                console.log(`${comman}\ncmd: ${cmd}`);
             } else {
                 comman = false;
             }
