@@ -144,12 +144,14 @@ async function Iris() {
             }
 
             let whats;
+            let match;
 
             switch (true) {
                 case command.pattern && command.pattern.test(comman):
                     try {
                         match = text_msg.replace(new RegExp(command.pattern, "i"), "").trim();
                     } catch (e) {
+                        console.log(e);
                         match = false;
                     }
                     whats = new Message(conn, msg);
