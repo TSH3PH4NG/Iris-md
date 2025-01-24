@@ -122,14 +122,13 @@ async function Iris() {
                 }\nFrom : ${msg.sender}\nMessage:${text_msg}\nSudo:${msg.sudo} , ${typeof msg.body}`
             );
         }
+               
+           const prefix = config.HANDLERS.trim();
+           let comman = text_msg;
 
-        events.commands.map(async (command) => {
+           events.commands.forEach((command) => {
             if (command.fromMe && !msg.sudo) return;
             
-                const prefix = config.HANDLERS.trim();
-                let comman = text_msg;
-
-                lib.commands.forEach((command) => {
                     if (command?.pattern instanceof RegExp) {
                         
                         const regex = new RegExp(command.pattern.source, command.pattern.flags);
@@ -139,7 +138,7 @@ async function Iris() {
                             comman = cmd[1] || false;
                         }
                     }
-                });
+               
 
             
 
