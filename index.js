@@ -131,6 +131,7 @@ async function Iris() {
                 const regex = new RegExp(`^${command.pattern.source}`);
                 const cmd = msg.body.match(regex);
                 comman = cmd ? cmd[0] : false; /*it's the same as if/else*/
+                console.log(`text: ${text_msg}\ncmd: ${cmd}\ncomman: ${comman}\ncommand: ${command.pattern}`)
             } else {
                 comman = false;
             }
