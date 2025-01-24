@@ -11,7 +11,7 @@ const util = require("util");
 command({
     pattern: 'eval', on: "text", fromMe: true, desc: 'Runs a server code'
 }, async (message, match, m, client) => {
-    if (match.startsWith("~")) {
+    if (!match.startsWith("~")) return;
         //const m = message;
         try {
             let evaled = await eval(`(async()=> { ${match.replace("~", "")} }) ()`);
@@ -20,5 +20,5 @@ command({
         } catch (err) {
            return await message.reply(util.format(err));
         }
-    }
+    
 });
