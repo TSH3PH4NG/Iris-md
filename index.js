@@ -136,7 +136,7 @@ async function Iris() {
                         cmd = text_msg?.match(regex);
 
                         if (cmd && cmd[0].startsWith(prefix)) {
-                            comman = cmd[1] || false;
+                            comman = cmd[2] || false;
                             console.log(`comman:${comman}\nPattern: ${command.pattern}\ncmd: ${cmd}`)
                         }else{
                             comman = false;
@@ -159,7 +159,7 @@ async function Iris() {
             switch (true) {
                 case command.pattern && command.pattern.test(comman):
                     try {
-                        match = cmd[0] || " "
+                        match = cmd[2] || ""
                     } catch (e) {
                         match = false;
                     }
