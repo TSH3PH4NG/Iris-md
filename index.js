@@ -11,7 +11,7 @@ const path = require("path");
 const fs = require("fs");
 const config = require("./config");
 const pino = require("pino");
-const { Message } = require("./lib/Messages");
+const { Image, Message, Sticker, Video, AllMessage } = require("./lib/Messages");
 const { serialize, Greetings, parsedJid } = require("./lib");
 const events = require("./lib/events");
 const express = require("express");
@@ -171,21 +171,21 @@ async function Iris() {
 
                 case command.on === "image" || command.on === "photo":
                     if (msg.type === "imageMessage") {
-                        whats = new  Message(conn, msg);
+                        whats = new  Image(conn, msg);
                         command.function(whats, text_msg, msg, conn, m);
                     }
                     break;
 
                 case command.on === "sticker":
                     if (msg.type === "stickerMessage") {
-                        whats = new  Message(conn, msg);
+                        whats = new  Sticker(conn, msg);
                         command.function(whats, msg, conn, m);
                     }
                     break;
 
                 case command.on === "video":
                     if (msg.type === "videoMessage") {
-                        whats = new Message(conn, msg);
+                        whats = new Video(conn, msg);
                         command.function(whats, msg, conn, m);
                     }
                     break;
