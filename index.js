@@ -130,9 +130,9 @@ async function Iris() {
             let comman = text_msg;
 
             if (command?.pattern instanceof RegExp && typeof comman === "string") {
-                const regex = new RegExp(`^${command.pattern.source}`);
+                const regex = new RegExp(`^${command.pattern.source.replace(/\$$/, "")}`);
                 const cmd = msg.body.match(regex);
-                comman = cmd && cmd[0]?.startsWith(prefix) ? cmd[0] : text_msg; /*it's the same as if/else*/
+                comman = cmd && cmd[0]?.startsWith(prefix) ? cmd[0] : false; /*it's the same as if/else*/
             }
 
             msg.prefix = prefix;
