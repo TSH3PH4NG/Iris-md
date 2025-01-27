@@ -45,16 +45,14 @@ command(
           require("./" + plugin_name);
         } catch (e) {
           fs.unlinkSync(__dirname + "/" + plugin_name + ".js");
-          return await message.sendMessage(
-            message.jid,
+          return await message.reply(
             "Invalid Plugin\n ```" + e + "```"
           );
         }
 
         await installPlugin(url, plugin_name);
 
-        await message.sendMessage(
-          message.jid,
+        await message.reply(
           `_New plugin installed : ${plugin_name}_`
         );
       }
