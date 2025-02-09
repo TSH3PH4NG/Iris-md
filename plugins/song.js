@@ -1,4 +1,4 @@
-const { command , youtube , getBuffer , yts , tubis , tubidl }  = require("../lib");
+const { command , ytdl , getBuffer , yts , tubis , tubidl }  = require("../lib");
 
 command({
 pattern: "song",
@@ -9,13 +9,10 @@ if(!match) return message.client.sendMessage(message.jid , {text: "i need a quer
 
 
 let { title , url } = await yts(match);
-let  { song } = await youtube.download(url);
-let buff = await getBuffer(song);
-
-
+let  buff  = await ytdl(url);
 
 try{
-return await message.client.sendMessage(message.jid, {audio: buff , mimetype: "audio/mpeg"}, {quoted: m})
+return await message.client.sendMessage(message.jid, { audio: buff , mimetype: "audio/mpeg" }, {quoted: m });
 }catch(e){
   
 let decoy = await tubis(title);
