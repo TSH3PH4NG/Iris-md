@@ -1,4 +1,4 @@
-const {command , metaData , getBuffer , yts , youtube } = require("../lib");
+const {command , metaData , getBuffer , yts , ytdl } = require("../lib");
 const acrcloud = require("acrcloud")
 const fs = require("fs-extra");
 const ffmpeg = require('fluent-ffmpeg');
@@ -76,10 +76,9 @@ try{
 let final = m.quoted.text.split("┠ ")[2] 
 final = final.replace("url:", "")
 let ur_l = final;
-let { song }  = await youtube.download(ur_l);
-let mp3 = await getBuffer(song);
+let data = await ytdl(ur_l);
 	
-await message.client.sendMessage(message.jid , {audio: mp3 , mimetype: "audio/mpeg"} ,{quoted: m})
+await message.client.sendMessage(message.jid , {audio: data , mimetype: "audio/mpeg"} ,{quoted: m})
 
 }catch(e){
 return e
