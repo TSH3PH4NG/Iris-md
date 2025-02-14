@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { command , getBuffer , getJson } = require("../lib");
-const fetch = require("node-fetch");
-const { fromBuffer } = require("file-type");
+/*const fetch = require("node-fetch");
+const { fromBuffer } = require("file-type");*/
 
 
 command({
@@ -18,9 +18,9 @@ if(match.includes("www.instagram.com")) {
 let bb = await getJson(`https://olduser.us.kg/instagram/igdl?apikey=anya-md&url=${match}`)
 let buffer = await getBuffer(bb?.InstagramLinks[0]);
 
-let { ext } = await fromBuffer(buffer);
+/*let { ext } = await fromBuffer(buffer); will apply to future codes*/
 
-if(ext == "jpg"){
+if(bb.contentType[0] == "image/jpeg"){
 	
 return await message.client.sendMessage(message.jid , { image: buffer , caption: "*Instagram image*"}  , {quoted: m})
 
