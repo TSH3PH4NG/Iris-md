@@ -1,8 +1,7 @@
-/*Credit: @Aromal*/
-/*Coded by Me*/
-const axios = require("axios")
+const axios = require("axios");
 const { command , getBuffer } = require("../lib");
-const jimp = require("jimp")
+const fetch = require("node-fetch");
+const { fromBuffer } = require("file-type");
 
 
 command({
@@ -15,19 +14,23 @@ if (!match.includes("www.instagram.com") && !match.includes("www.facebook.com"))
 
 if(match.includes("www.instagram.com")) {
 	
-let { data } = await axios(`https://enthusiastic-ag-lokiking-524102b4.koyeb.app/download/insta?url=${match}`)
+let bb  = await ( await fetch(`https://diegoson-naxordeve.hf.space/insta_reels?url=${match}`)).json()
+if(bb.error) {
+bb  =  await ( await fetch(`https://diegoson-naxordeve.hf.space/insta_reels?url=${match}`)).json()
+}
 
-let { url } = data.result[0]
+let buffer = await getBuffer(bb.data?.downloadURL);
 
-if(url.includes("jpg")){
+let file  = await fromBuffer(buffer);
+
+if(file.ext == "jpg"){
 	
-let buffer = await getBuffer(url);
 await message.client.sendMessage(message.jid , { image: buffer , caption: "*Instagram image*"}  , {quoted: m})
 
 }
 else{
 	
-let buff = await getBuffer(url);
+let buff = await getBuffer(downloadURL);
 await message.client.sendMessage(message.jid , {video: buff , mimetype: "video/mp4"}  , {quoted: m})
 
 }/*nested if and else close*/
@@ -35,13 +38,13 @@ await message.client.sendMessage(message.jid , {video: buff , mimetype: "video/m
    }
 
 else if(match.includes("www.facebook.com")){
- let { data } = await axios(`https://enthusiastic-ag-lokiking-524102b4.koyeb.app/download/facebook?url=${match}`)
+ let { data } = await axios(`https://diegoson-naxordeve.hf.space/facebook?url=${match}`)
 
 
 
-let buff = await getBuffer(data.result?.hd || data.result?.sd);
+let buff = await getBuffer(data.data["720p (HD)"] || data.data["360p (SD)"]);
 
-await message.client.sendMessage(message.jid , {video: buff , mimetype: "video/mp4", caption: `title: ${data.result?.title}\n\n*©Tshepang Masia*`}  , {quoted: m})
+await message.client.sendMessage(message.jid , {video: buff , mimetype: "video/mp4", caption: `title: *©Tshepang Masia*`}  , {quoted: m})
 
 }
 
