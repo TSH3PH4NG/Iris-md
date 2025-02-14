@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { command , getBuffer } = require("../lib");
+const { command , getBuffer , getJson } = require("../lib");
 const fetch = require("node-fetch");
 const { fromBuffer } = require("file-type");
 
@@ -14,23 +14,20 @@ if (!match.includes("www.instagram.com") && !match.includes("www.facebook.com"))
 
 if(match.includes("www.instagram.com")) {
 	
-let bb  = await ( await fetch(`https://diegoson-naxordeve.hf.space/insta_reels?url=${match}`)).json()
-if(bb.error) {
-bb  =  await ( await fetch(`https://diegoson-naxordeve.hf.space/insta_reels?url=${match}`)).json()
-}
 
-let buffer = await getBuffer(bb.data?.downloadURL);
+let bb = await getJson(`https://olduser.us.kg/instagram/igdl?apikey=anya-md&url=${match}`)
+let buffer = await getBuffer(bb?.InstagramLinks[0]);
 
-let file  = await fromBuffer(buffer);
+let { ext } = await fromBuffer(buffer);
 
-if(file.ext == "jpg"){
+if(ext == "jpg"){
 	
-await message.client.sendMessage(message.jid , { image: buffer , caption: "*Instagram image*"}  , {quoted: m})
+return await message.client.sendMessage(message.jid , { image: buffer , caption: "*Instagram image*"}  , {quoted: m})
 
 }
 else{
 	
-let buff = await getBuffer(downloadURL);
+let buff = await getBuffer(bb?.InstagramLinks[0]);
 await message.client.sendMessage(message.jid , {video: buff , mimetype: "video/mp4"}  , {quoted: m})
 
 }/*nested if and else close*/
