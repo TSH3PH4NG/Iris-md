@@ -9,8 +9,8 @@ if(!match) return message.client.sendMessage(message.jid , {text: "i need a quer
 
 
 let { title , url } = await yts(match);
-let  buff  = await ytdl(url);
-buff = await metaData(title, buff);
+let  buff  = await ytdl(url);/*
+buff = await metaData(title, buff);*/
 
 try{
 return await message.client.sendMessage(message.jid, { audio: buff , mimetype: "audio/mpeg" }, {quoted: m });
@@ -18,8 +18,8 @@ return await message.client.sendMessage(message.jid, { audio: buff , mimetype: "
   
 let decoy = await tubis(title);
 let decoydl = await tubidl(decoy[0]?.link);
-let buffer = await getBuffer(decoydl[0]?.url);
-buffer = await metaData(title,buffer);
+let buffer = await getBuffer(decoydl[0]?.url);/*
+buffer = await metaData(title,buffer);*/
   
 return await message.client.sendMessage(message.jid, { audio: buffer , mimetype: "audio/mpeg"}, {quoted: m})
 }
