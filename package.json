@@ -12,6 +12,7 @@
     "url": "git+https://github.com/TSH3PH4NG/Iris-md.git"
   },
   "dependencies": {
+    "axios": "^1.7.9",
     "@whiskeysockets/baileys": "git+https://github.com/TSH3PH4NG/tspjs.git",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
