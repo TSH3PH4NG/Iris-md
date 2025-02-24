@@ -66,7 +66,7 @@ message.reply(e)
 
 command({
  on: "text",
- fromMe: true
+ fromMe: false
 },
 async(message,match ,m)=> {
 if(match == 1 && m.quoted.text.includes("url")){
