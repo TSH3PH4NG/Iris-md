@@ -1,11 +1,16 @@
 const {
     command,
-    syt,
+    yts,
+    ytdl
     getJson,
     getBuffer,
+    isYT,
+    isInsta,
 } = require("../lib/");/*fave functions*/
 const lib = require("../lib");
 const util = require("util");
+const axios = require("axios");
+const fetch = require("node-fetch");
 
 
 command({
