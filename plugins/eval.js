@@ -1,7 +1,7 @@
 const {
     command,
     yts,
-    ytdl
+    ytdl,
     getJson,
     getBuffer,
     isYT,
