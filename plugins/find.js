@@ -25,9 +25,10 @@ try{
 
 let res = await acr.identify(buff)
 let platform;
+let finder;
 
 try{
-let finder  = res.metadata.music[0].album?.name
+finder  = res.metadata.music[0].album?.name
 plaform = "acrcloud"
 } catch {
 	
