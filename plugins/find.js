@@ -1,4 +1,5 @@
-const { command, metaData, getBuffer, yts, ytdl, shazam } = require("../lib");
+const { command, metaData, getBuffer, ytdl, shazam } = require("../lib");
+const yts = require("yt-search");
 const acrcloud = require("acrcloud");
 const fs = require("fs-extra");
 const ffmpeg = require('fluent-ffmpeg');
@@ -32,14 +33,14 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
             platform = "shazam";
         }
 
-        let { title, link, thumbnail, duration  } = await yts(finder);
+        let { title, link, thumbnail, timestamp } = await (await yts(res)).all[0]
         let im = await getBuffer(thumbnail);
         let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
 ┃ 
 ┠ title: ${title}
-┠ url: ${link}
-┠ duration: ${duration}
+┠ url: ${url}
+┠ duration: ${timestamp}
 ┠ platform: ${platform}
 ┃ 
 ╰━━━━━━━━━━━──⊷`
