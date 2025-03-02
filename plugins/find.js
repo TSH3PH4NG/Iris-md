@@ -32,13 +32,13 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
             platform = "shazam";
         }
 
-        let { title, link, thumbnail, duration } = await yts(finder);
+        let { title, link, thumbnail, duration , link } = await yts(finder);
         let im = await getBuffer(thumbnail);
         let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
 ┃ 
 ┠ title: ${title}
-┠ url: ${url}
+┠ url: ${link}
 ┠ duration: ${duration}
 ┠ platform: ${platform}
 ┃ 
@@ -76,6 +76,6 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
         } catch (e) {
             return e;
         }
+        
     }
 });
-
