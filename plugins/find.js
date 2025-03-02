@@ -1,4 +1,4 @@
-const {command , metaData , getBuffer , yts , ytdl } = require("../lib");
+const {command , metaData , getBuffer , yts , ytdl , shazam } = require("../lib");
 const acrcloud = require("acrcloud")
 const fs = require("fs-extra");
 const ffmpeg = require('fluent-ffmpeg');
@@ -7,8 +7,7 @@ command(
 {
 pattern : "find",
 fromMe: false,
-desc : "yts player",
-type : "music",
+desc: "music finder"
  },
  
  async (message, match, m) => {
@@ -26,13 +25,9 @@ try{
 
 let res = await acr.identify(buff)
 
-
-let {code , msg}  = res.status
-if(code !== 0) return await message.reply(msg)
-
-let { name , album } = res.metadata.music[0]
+let finder  = res.metadata.music[0]
     
-let { title , url , thumbnail , views , duration } = await yts(album?.name)
+let { title , url , thumbnail , views , duration } = await yts(finder.album?.name || (await shazam(buff)).title );
 let im = await getBuffer(thumbnail)
     let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
