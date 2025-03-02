@@ -1,6 +1,5 @@
 const {
     command,
-    yts,
     ytdl,
     getJson,
     getBuffer,
