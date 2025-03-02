@@ -1,4 +1,4 @@
-const {command , metaData , getBuffer , yts , ytdl , shazam } = require("../lib");
+const { command , metaData , getBuffer , yts , ytdl , shazam } = require("../lib");
 const acrcloud = require("acrcloud")
 const fs = require("fs-extra");
 const ffmpeg = require('fluent-ffmpeg');
@@ -12,7 +12,7 @@ desc: "music finder"
  
  async (message, match, m) => {
  if (!message.reply_message.message.videoMessage && !message.reply_message.message.audioMessage)
-      return await message.sendMessage("*Need Video! Or Audio*", {quoted: m});
+      return await message.reply("only works on videos and audio files");
 	
  let buff = await m.quoted.download()
 try{
@@ -24,10 +24,24 @@ try{
 
 
 let res = await acr.identify(buff)
+let platform;
 
-let finder  = res.metadata.music[0]
+try{
+let finder  = res.metadata.music[0].album?.name
+plaform = "acrcloud"
+} catch {
+	
+let metadata = await shazam(buff);
+
+if(metadata == "Track not found."){
+return message.reply("all attempts failed");
+};
+
+finder = metadata.title
+platform = "shazam";
+}
     
-let { title , url , thumbnail , views , duration } = await yts(finder.album?.name || (await shazam(buff)).title );
+let { title , link , thumbnail , duration } = await yts(finder);
 let im = await getBuffer(thumbnail)
     let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
@@ -35,7 +49,7 @@ let im = await getBuffer(thumbnail)
 ┠ title: ${title}
 ┠ url: ${url}
 ┠ duration: ${duration}
-┠ views: ${views}
+┠ platform: ${platform}
 ┃ 
 ╰━━━━━━━━━━━──⊷`
 
