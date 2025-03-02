@@ -7,7 +7,7 @@ fromMe: false
 async(message,match, m)=>{
 if(!match) return message.reply("_i need a query_");
 
-let { title , url } = await yts(match);
+let { title , url } = await await (await yts(match)).all[0]
 let  buff  = await ytdl(url);
 buff = await metaData(title, buff);
 
