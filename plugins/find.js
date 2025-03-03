@@ -9,17 +9,9 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
         return await message.reply("only works on videos and audio files");
 
     
-const audioCut = (infile, start, end, filename = "cut") => new Promise((function(output, error) {
-ffmpeg(infile).setStartTime(start).setDuration(end).save(filename + ".mp3").on("error", (e => error(new Error(e.message)))).on("end", (() => {
-const file = fs.readFileSync(filename + ".mp3");
-output(file)
-}))
-}))
+
 
 let buff = await m.quoted.download();
-await fs.writeFileSync("temp.mp3", buff)
-let cut_audio = await audioCut("temp.mp3", 0,10)
-
 
     try {
         const acr = new acrcloud({
@@ -28,7 +20,7 @@ let cut_audio = await audioCut("temp.mp3", 0,10)
             access_secret: "d5mygczEZkPlBDRpFjwySUexQM26jix0gCmih389"
         });
 
-        let res = await acr.identify(cut_audio);
+        let res = await acr.identify(buff);
         let platform;
         let finder;
 
@@ -69,8 +61,6 @@ let cut_audio = await audioCut("temp.mp3", 0,10)
             }
         }, { quoted: m });
 
-        await fs.unlinkSync("temp.mp3");
-        await fs.unlinkSync("cut.mp3");
 
     } catch (e) {
         message.reply(e);
