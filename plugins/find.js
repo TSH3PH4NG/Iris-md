@@ -9,7 +9,7 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
         return await message.reply("only works on videos and audio files");
 
     
-    const audioCut = (infile, start, end, filename = "cut") => new Promise((function(output, error) {
+const audioCut = (infile, start, end, filename = "cut") => new Promise((function(output, error) {
 ffmpeg(infile).setStartTime(start).setDuration(end).save(filename + ".mp3").on("error", (e => error(new Error(e.message)))).on("end", (() => {
 const file = fs.readFileSync(filename + ".mp3");
 output(file)
