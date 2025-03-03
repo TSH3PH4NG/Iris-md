@@ -9,8 +9,6 @@ const {
 const lib = require("../lib");
 const util = require("util");
 const axios = require("axios");
-const fetch = require("node-fetch");
-
 
 command({
     pattern: 'eval', on: "text", fromMe: true, desc: 'Runs a server code'
