@@ -8,7 +8,18 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
     if (!message.reply_message.message.videoMessage && !message.reply_message.message.audioMessage)
         return await message.reply("only works on videos and audio files");
 
-    let buff = await m.quoted.download();
+    
+    const audioCut = (infile, start, end, filename = "cut") => new Promise((function(output, error) {
+ffmpeg(infile).setStartTime(start).setDuration(end).save(filename + ".mp3").on("error", (e => error(new Error(e.message)))).on("end", (() => {
+const file = fs.readFileSync(filename + ".mp3");
+output(file)
+}))
+}))
+
+let buff = await m.quoted.download();
+await fs.writeFileSync("temp.mp3", buff)
+let cut_audio = await audioCut("temp.mp3", 0,10)
+
 
     try {
         const acr = new acrcloud({
@@ -17,7 +28,7 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
             access_secret: "d5mygczEZkPlBDRpFjwySUexQM26jix0gCmih389"
         });
 
-        let res = await acr.identify(buff);
+        let res = await acr.identify(cut_audio);
         let platform;
         let finder;
 
@@ -33,8 +44,8 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
             platform = "shazam";
         }
 
-        let { title, url , thumbnail, timestamp } = await (await yts(finder)).all[0]
-        let im = await getBuffer(thumbnail);
+        let { title, url , timestamp } = await (await yts(finder)).all[0]
+        let im = await getBuffer("https://files.catbox.moe/nr8x0o.jpg");
         let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
 ┃ 
@@ -45,7 +56,7 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
 ┃ 
 ╰━━━━━━━━━━━──⊷`
 
-        return await message.client.sendMessage(message.jid, {
+        await message.client.sendMessage(message.jid, {
             text: text,
             contextInfo: {
                 externalAdReply: {
@@ -57,6 +68,9 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
                 }
             }
         }, { quoted: m });
+
+        await fs.unlinkSync("temp.mp3");
+        await fs.unlinkSync("cut.mp3");
 
     } catch (e) {
         message.reply(e);
