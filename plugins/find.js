@@ -4,6 +4,7 @@ const acrcloud = require("acrcloud");
 const fs = require("fs-extra");
 const ffmpeg = require('fluent-ffmpeg');
 
+let tx;
 command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message, match, m) => {
     if (!message.reply_message.message.videoMessage && !message.reply_message.message.audioMessage)
         return await message.reply("only works on videos and audio files");
@@ -12,7 +13,6 @@ command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message
 
 
 let buff = await m.quoted.download();
-
     try {
         const acr = new acrcloud({
             host: "identify-eu-west-1.acrcloud.com",
@@ -38,6 +38,7 @@ let buff = await m.quoted.download();
 
         let { title, url , timestamp } = await (await yts(finder)).all[0]
         let im = await getBuffer("https://files.catbox.moe/nr8x0o.jpg");
+        tx = title;
         let  text = `
 ╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
 ┃ 
@@ -74,6 +75,7 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
             final = final.replace("url:", "");
             let ur_l = final;
             let data = await ytdl(ur_l);
+            data = await metaData(tx, data);
             await message.client.sendMessage(message.jid, {
                 audio: data,
                 mimetype: "audio/mpeg"
