@@ -57,7 +57,7 @@ async function Iris() {
         auth: { creds: state.creds, keys: makeCacheableSignalKeyStore(state.keys, logger) },
         printQRInTerminal: false,
         logger: pino({ level: "silent" }),
-        browser: Browsers.ubuntu("Chrome"),
+        browser: Browsers.macOS('Desktop'),
         downloadHistory: false,
         syncFullHistory: false,
         markOnlineOnConnect: false,
