@@ -131,8 +131,13 @@ async function Iris() {
 
             if (command?.pattern instanceof RegExp && typeof comman === "string") {
                 const regex = new RegExp(`^${command.pattern.source}`); /*insures that commands don't tweak like .alivebb running instead of .alive bb*/
+                try{
                 const cmd = msg.body.match(regex);
                 comman = cmd && cmd[0]?.startsWith(prefix) ? cmd[0] : false; /*it's the same as if/else*/
+                } catch(e){
+                	console.log(`error: ${e}\n cmd: ${cmd}`)
+
+      }
             }
 
             msg.prefix = prefix;
