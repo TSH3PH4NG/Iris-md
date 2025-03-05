@@ -6,7 +6,7 @@
   "scripts": {
     "start": "pm2 start . --attach --name iris",
     "docker": "pm2-runtime start . --name iris",
-    "stop": "pm2 stop levanter",
+    "stop": "pm2 stop iris",
     "postinstall": "node -e \"try { require('sharp') } catch (e) { process.exit(1); }\" || yarn add --ignore-engines sharp@0.33.5"
   },
   "repository": {
