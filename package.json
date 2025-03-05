@@ -4,15 +4,17 @@
   "description": "void",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start . --attach --namespace Iris_2 --name Iris_2",
-    "stop": "pm2 stop Iris_2"
+    "start": "pm2 start . --attach --name iris",
+    "docker": "pm2-runtime start . --name iris",
+    "stop": "pm2 stop levanter",
+    "postinstall": "node -e \"try { require('sharp') } catch (e) { process.exit(1); }\" || yarn add --ignore-engines sharp@0.33.5"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/TSH3PH4NG/Iris-md.git"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "latest",
+    "@whiskeysockets/baileys": "git+https://github.com/TSH3PH4NG/tspjs.git",
     "@adiwajshing/keyed-db": "^0.2.4",
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@hapi/boom": "^10.0.1",    
