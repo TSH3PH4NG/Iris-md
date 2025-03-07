@@ -7,6 +7,9 @@ command({
 },
 async(message , m , match)=>{
 let bb = await uptime(process.uptime())
-return message.reply(`*hello ${message.pushName} all systems are functional\nuptime: ${bb}*`)
+return message.reply(`
+Hello ${message.pushName} all systems are functional
+uptime: ${bb}
+`)
   
 })
