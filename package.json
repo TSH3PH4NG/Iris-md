@@ -1,13 +1,13 @@
 {
   "name": "iris-md",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "void",
   "main": "index.js",
   "scripts": {
     "start": "pm2 start . --attach --name iris",
     "docker": "pm2-runtime start . --name iris",
     "stop": "pm2 stop iris",
-    "postinstall": "node -e \"try { require('sharp') } catch (e) { process.exit(1); }\" || yarn add --ignore-engines sharp@0.33.5"
+    "postinstall": "node -e \"try { require('sharp') } catch (e) { process.exit(1); }\" || yarn add --ignore-engines sharp@0.32.2"
   },
   "repository": {
     "type": "git",
