@@ -1,17 +1,9 @@
-const { downloadMediaMessage } = require("@whiskeysockets/baileys");
 const { command } = require("../lib");
 
 command({ pattern: "vo", fromMe: true }, async (message, match, m) => {
   if (!m.quoted.message.viewOnceMessageV2) return;
 
-  const buffer = await downloadMediaMessage(
-    m.quoted,
-    "buffer",
-    {},
-    {
-      reuploadRequest: message.client.updateMediaMessage,
-    }
-  );
+  const buffer = await m.quoted.download();
 
   let res;
 
@@ -38,4 +30,4 @@ command({ pattern: "vo", fromMe: true }, async (message, match, m) => {
       break;
   
 }
-});/*take with cred @MARTIN MASIA*/
+});
