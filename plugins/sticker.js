@@ -1,4 +1,4 @@
-const { command } = require("../lib");
+const { command , reply } = require("../lib");
 
 command({
 pattern: "sticker",
