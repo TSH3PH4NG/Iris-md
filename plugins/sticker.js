@@ -5,9 +5,8 @@ pattern: "sticker",
 fromMe: false,
 }, async(message,match,m)=>{
   
-const quoted = m.quoted ? m.quoted.mtype : m.type
-const mime = quoted;
-if(!/imageMessage|videoMessage/.test(mime)) return message.reply('Reply to an image or video');
+let { msg , status , mime } = await reply(m, "image&video", true);
+if(status == 0) return message.reply(msg);
 let res;
 
 if(mime == "imageMessage"){
