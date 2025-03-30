@@ -6,8 +6,7 @@ const ffmpeg = require('fluent-ffmpeg');
 
 let tx;
 command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message, match, m) => {
-    if (!message.reply_message.message.videoMessage && !message.reply_message.message.audioMessage)
-        return await message.reply("only works on videos and audio files");
+    if (!message.reply_message || (!message.reply_message.message.videoMessage && !message.reply_message.message.audioMessage))   return await message.reply("only works on videos and audio files");
 
     
 
