@@ -1,4 +1,4 @@
-const { command , toAudio  } = require("../lib");
+const { command , toAudio , reply  } = require("../lib");
 
 
 command({
