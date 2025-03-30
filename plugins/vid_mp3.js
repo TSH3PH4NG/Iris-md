@@ -12,9 +12,8 @@ let pt = true;
 if(!match){
 pt = false;
 }
-const quoted = m.quoted ? m.quoted.mtype : m.type
-const mime = quoted;
-if(!/videoMessage/.test(mime)) return message.reply('Reply to a video');
+let { msg , status , mime } = await reply(m, "video", true);
+if(status == 0) return message.reply(msg);
 let buffer = await m.download();
 let res = await toAudio(buffer, "mp3");
 return message.client.sendMessage(message.jid , {audio: res , mimetype: "audio/mpeg", ptt: pt} ,{ quoted: m });
