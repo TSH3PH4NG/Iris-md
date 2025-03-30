@@ -4,17 +4,19 @@ command({
 pattern: "sticker",
 fromMe: false,
 }, async(message,match,m)=>{
-if(!message.reply_message || (!message.reply_message.message.imageMessage && !message.reply_message.message.videoMessage)) return message.reply("reply to an image or video");
-
+  
+const quoted = m.quoted ? m.quoted.mtype : m.type
+const mime = quoted;
+if(!/imageMessage|videoMessage/.test(mime)) return message.reply('Reply to an image or video');
 let res;
 
-if(message.reply_message.message.imageMessage){
+if(mime == "imageMessage"){
 res = "image"
 }else{
 res = "video"
 };
 
-let bb = await m.quoted.download();
+let bb = await m.download();
 
 switch(res){
 
