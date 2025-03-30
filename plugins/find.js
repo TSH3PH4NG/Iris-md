@@ -8,7 +8,7 @@ let tx;
 command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message, match, m) => {
     
     
-let { msg , status , mime } = await reply(m, "audio&video");
+let { msg , status , mime } = await reply(m, "audio&video", true);
 if(status == 0) return message.reply(msg);
     
 let buff = await m.download();
