@@ -3,7 +3,7 @@ credit: Tshepang  && Toxic Turbo
 */
 
 
-const { command } = require("../lib")
+const { command , reply } = require("../lib")
 const imgbbUploader = require("imgbb-uploader");
 const { writeFileSync, unlinkSync } = require("fs-extra");
 const fetch = require("node-fetch");
