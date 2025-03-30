@@ -4,7 +4,7 @@ command({
 pattern: "sticker",
 fromMe: false,
 }, async(message,match,m)=>{
-if(!message.repl_message || (!message.reply_message.message.imageMessage && !message.reply_message.message.videoMessage)) return message.reply("reply to an image or video");
+if(!message.reply_message || (!message.reply_message.message.imageMessage && !message.reply_message.message.videoMessage)) return message.reply("reply to an image or video");
 
 let res;
 
