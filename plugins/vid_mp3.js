@@ -12,7 +12,7 @@ let pt = true;
 if(!match){
 pt = false;
 }
-let { msg , status , mime } = await reply(m, "video");
+let { msg , status , mime } = await reply(m, "video", true);
 if(status == 0) return message.reply(msg);
 let buffer = await m.download();
 let res = await toAudio(buffer, "mp3");
