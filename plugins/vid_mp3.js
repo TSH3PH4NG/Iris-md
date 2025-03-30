@@ -12,7 +12,7 @@ let pt = true;
 if(!match){
 pt = false;
 }
-if(!message.reply_message.message.videoMessage) return message.reply("reply to a video");
+if(!message.reply_message || !message.reply_message.message.videoMessage) return message.reply("reply to a video");
 let buffer = await m.quoted.download();
 
 
