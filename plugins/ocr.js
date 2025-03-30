@@ -14,7 +14,7 @@ command({
 },
 async(message,match,m)=>{
 
-let { msg , status , mime } = await reply(m, "image");
+let { msg , status , mime } = await reply(m, "image", true);
 if(status == 0) return message.reply(msg);
 let { key } = await message.send(message.jid , "processing image", {quoted: m});
 
