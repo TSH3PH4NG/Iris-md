@@ -13,8 +13,9 @@ command({
 	fromMe: false,
 },
 async(message,match,m)=>{
-if(!message.reply_message || !message.reply_message.message.imageMessage) return message.reply(`reply to an image with the text you want to extract`);
 
+let { msg , status , mime } = await reply(m, "image", true);
+if(status == 0) return message.reply(msg);
 let { key } = await message.send(message.jid , "processing image", {quoted: m});
 
 let buff = await m.quoted.download(); 
