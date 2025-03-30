@@ -1,4 +1,4 @@
-const { command, metaData, getBuffer, ytdl, shazam } = require("../lib");
+const { command, reply,  metaData, getBuffer, ytdl, shazam } = require("../lib");
 const yts = require("yt-search");
 const acrcloud = require("acrcloud");
 const fs = require("fs-extra");
@@ -8,10 +8,9 @@ let tx;
 command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message, match, m) => {
     
     
-const quoted = m.quoted ? m.quoted.mtype : m.type
-const mime = quoted;
-if(!/audioMessage|videoMessage/.test(mime)) return message.reply('Reply to an audio or video');
-
+let { msg , status , mime } = await reply(m, "audio&video", true);
+if(status == 0) return message.reply(msg);
+    
 let buff = await m.download();
     try {
         const acr = new acrcloud({
