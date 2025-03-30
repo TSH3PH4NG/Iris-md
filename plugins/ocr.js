@@ -13,7 +13,7 @@ command({
 	fromMe: false,
 },
 async(message,match,m)=>{
-if(!message.reply_message.message.imageMessage) return message.client.sendMessage(message.jid , {text: `reply to an image with the text you want to extract`}, {quoted: m});
+if(!message.reply_message || !message.reply_message.message.imageMessage) return message.reply(`reply to an image with the text you want to extract`);
 
 let { key } = await message.send(message.jid , "processing image", {quoted: m});
 
