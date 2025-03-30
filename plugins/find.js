@@ -6,12 +6,13 @@ const ffmpeg = require('fluent-ffmpeg');
 
 let tx;
 command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message, match, m) => {
-    if (!message.reply_message || (!message.reply_message.message.videoMessage && !message.reply_message.message.audioMessage))   return await message.reply("only works on videos and audio files");
-
     
+    
+const quoted = m.quoted ? m.quoted.mtype : m.type
+const mime = quoted;
+if(!/audioMessage|videoMessage/.test(mime)) return message.reply('Reply to an audio or video');
 
-
-let buff = await m.quoted.download();
+let buff = await m.download();
     try {
         const acr = new acrcloud({
             host: "identify-eu-west-1.acrcloud.com",
