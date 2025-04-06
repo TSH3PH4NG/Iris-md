@@ -3,10 +3,11 @@ const { command, getBuffer, getJson } = require("../lib");
 const { fromBuffer } = require("file-type");
 
 const instagramRegex = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/[^\s]+/;
-const facebookRegex = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/[^\s]+/;
+const facebookRegex  = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/[^\s]+/;
+const tiktokRegex    = /(?:https?:\/\/)?(?:www\.)?tiktok\.com\/[^\s]+/;
 
 command({ on: "text", fromMe: false }, async (message, match, m) => {
-  if (!instagramRegex.test(match) && !facebookRegex.test(match)) return;
+  if (!instagramRegex.test(match) && !facebookRegex.test(match) && !tiktokRegex.test(match)) return;
 
   try {
     if (instagramRegex.test(match)) {
@@ -41,7 +42,13 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
         { video: buffer, mimetype: "video/mp4", caption: "title: *©Tshepang Masia*" },
         { quoted: m }
       );
-    }
+    } else{
+let { data } = await axios.get(`https://api.vreden.my.id/api/tiktok?url=${match}`);
+let vx = data.result.data;
+let filter =  vx.filter(v => v.type == "nowatermark");
+let buffer = await getBuffer(filter[0].url);
+return message.client.sendMessage(message.jid, { video: buffer , caption: data.result.title }, { quoted: m });
+   }
   } catch (error) {
     message.reply("Error processing request:", error);
   }
