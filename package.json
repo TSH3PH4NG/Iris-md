@@ -31,7 +31,6 @@
     "node-fetch": "^2.6.7",
     "node-id3": "^0.2.8",
     "node-webpmux": "^3.2.0",
-    "pastebin-js": "^1.0.6",
     "pino": "^8.14.1",
     "pm2": "^5.2.0",
     "qrcode-terminal": "^0.12.0",
