@@ -28,7 +28,7 @@ module.exports = {
     WELCOME_MSG: process.env.WELCOME_MSG || 'Hi @user Welcome to @gname',
     GOODBYE_MSG: process.env.GOODBYE_MSG || 'Hi @user It was Nice Seeing you',
     AUTHOR: process.env.AUTHOR || 'Tshephang',
-    SUDO: process.env.SUDO || '',
+    SUDO: process.env.SUDO || '27828418477',
     CALL_REJECT: toBool(process.env.CALL_REJECT) || false,
     HEROKU_APP_NAME: process.env.HEROKU_APP_NAME || '',
     HEROKU_API_KEY: process.env.HEROKU_API_KEY || '',
