@@ -1,4 +1,4 @@
-const { command , ytdl , getBuffer , tubis , tubidl , metaData }  = require("../lib");
+const { command , ytdl , getBuffer , metaData }  = require("../lib");
 const yts = require("yt-search");
 
 command({
