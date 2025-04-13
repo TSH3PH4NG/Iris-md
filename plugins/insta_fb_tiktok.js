@@ -50,6 +50,6 @@ let buffer = await getBuffer(filter[0].url);
 return message.client.sendMessage(message.jid, { video: buffer , caption: data.result.title }, { quoted: m });
    }
   } catch (error) {
-    message.reply("Error processing request:", error);
+    console.log("Error processing request:", error);
   }
 });
