@@ -5,7 +5,7 @@ pattern: "sticker",
 fromMe: false,
 }, async(message,match,m)=>{
   
-let { msg , status , mime } = await reply(m, "image&video", true);
+let { msg , status , mime } = await reply(m, "image&video");
 if(status == 0) return message.reply(msg);
 let res;
 
