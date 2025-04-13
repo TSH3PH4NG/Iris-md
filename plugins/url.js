@@ -21,7 +21,7 @@ pattern: "url",
 fromMe: false,
 }, async(message,match,m)=>{
     
-    let { status , msg } = await reply(m,"all",true);
+    let { status , msg } = await reply(m,"all");
     if(status == 0) return message.reply(msg);
     let bb = await m.download();
     const { ext } = await fromBuffer(bb);
