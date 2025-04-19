@@ -32,7 +32,7 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
         }
       }
     } else if (facebookRegex.test(match)) {
-      let { data } = await axios.get(`https://diegoson-naxordeve.hf.space/facebook?url=${match}`);
+      let { data } = await axios.get(`https://tshepang-yasuke-martin.hf.space/fb?url=${match}`);
       let videoUrl = data.data["720p (HD)"] || data.data["360p (SD)"];
       if (!videoUrl) return;
       
