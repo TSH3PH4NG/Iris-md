@@ -39,7 +39,7 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
       let buffer = await getBuffer(videoUrl);
       await message.client.sendMessage(
         message.jid,
-        { video: buffer, mimetype: "video/mp4", caption: "title: *©Tshepang Masia*" },
+        { video: buffer, mimetype: "video/mp4" },
         { quoted: m }
       );
     } else{
