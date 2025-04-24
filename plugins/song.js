@@ -3,7 +3,7 @@ const yts = require("yt-search");
 
 command({
 pattern: "song",
-fromMe: false
+fromMe: true
 },
 async(message,match, m)=>{
 if(!match) return message.reply("_i need a query_");
