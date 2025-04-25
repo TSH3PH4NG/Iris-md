@@ -15,6 +15,6 @@ buff = await metaData(title, buff);
   
 return await message.client.sendMessage(message.jid, { audio: buff , mimetype: "audio/mpeg" }, {quoted: m });
 }catch(e){
-  await message.reply(e);
+  await console.log(e);
  }
 })
