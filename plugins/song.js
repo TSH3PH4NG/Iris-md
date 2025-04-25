@@ -11,6 +11,7 @@ try{
   
 let { title , url } = await (await yts(match)).all[0]
 let  buff  = await ytdl(url);
+if(!Buffer.isBuffer(buff)) return; /*idk what to log so this will do for now*/
 buff = await metaData(title, buff);
   
 return await message.client.sendMessage(message.jid, { audio: buff , mimetype: "audio/mpeg" }, {quoted: m });
