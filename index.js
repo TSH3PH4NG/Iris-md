@@ -60,6 +60,7 @@ async function Iris() {
             downloadHistory: false,
             syncFullHistory: false,
             markOnlineOnConnect: false,
+            getMessage: false,
             emitOwnEvents: false,
             generateHighQualityLinkPreview: true,
             defaultQueryTimeoutMs: undefined,
