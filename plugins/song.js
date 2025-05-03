@@ -1,5 +1,6 @@
 const { command , ytdl , getBuffer , metaData }  = require("../lib");
 const yts = require("yt-search");
+const axios = require("axios");
 
 command({
 pattern: "song",
@@ -9,7 +10,7 @@ async(message,match, m)=>{
 if(!match) return message.reply("_i need a query_");
 try{
   
-let { title , url } = await (await yts(match)).all[0]
+let { title , url } = await ( await axios(`https://tshepang-yasuke-martin.hf.space/yts?q=${match}`)).data[0];
 let  buff  = await ytdl(url);
 if(!Buffer.isBuffer(buff)) return; /*idk what to log so this will do for now*/
 buff = await metaData(title, buff);
