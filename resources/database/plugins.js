@@ -1,9 +1,8 @@
-const config = require('../../config');
 const {
     DataTypes
 } = require('sequelize');
 
-const PluginDB = config.DATABASE.define('Plugin', {
+const PluginDB = global.config.DATABASE.define('Plugin', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
