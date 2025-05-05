@@ -11,9 +11,9 @@ command(
   },
   async (message, match) => {
     if (!match) return await message.reply("_Send a plugin URL_");
-
+    let url;
     try {
-      let url = new URL(match);
+       url = new URL(match);
     } catch (e) {
       console.log(e);
       return await message.reply("_Invalid URL_");
