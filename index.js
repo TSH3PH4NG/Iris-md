@@ -1,7 +1,6 @@
 const { default: makeWASocket, useMultiFileAuthState, Browsers, makeInMemoryStore, delay, makeCacheableSignalKeyStore, DisconnectReason } = require("@whiskeysockets/baileys");
 const path = require("path");
 const fs = require("fs");
-const config = require("./config");
 const pino = require("pino");
 const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
 const logger = pino({ level: "silent" });
@@ -11,7 +10,7 @@ const { serialize, parsedJid } = require("./lib");
 const events = require("./lib/events");
 const express = require("express");
 const app = express();
-const port = config.PORT;
+const port = global.config.PORT;
 const NodeCache = require('node-cache');
 const EV = require("events");
 EV.setMaxListeners(0);
@@ -22,7 +21,7 @@ global.cache = {
 };
 
 if (!fs.existsSync("./resources/auth/creds.json")) {
-    MakeSession(config.SESSION_ID, "./resources/auth/creds.json").then(() =>
+    MakeSession(global.config.SESSION_ID, "./resources/auth/creds.json").then(() =>
         console.log("version : " + require("./package.json").version)
     );
 }
@@ -52,7 +51,7 @@ const p = async () => {
 async function Iris() {
     try {
         console.log(`Syncing database`);
-        await config.DATABASE.sync();
+        await global.config.DATABASE.sync();
 
         const { state, saveCreds } = await useMultiFileAuthState(`./resources/auth/`);
 
@@ -79,7 +78,7 @@ async function Iris() {
 
         conn.ev.on("call", async (c) => {
             try {
-                if (config.CALL_REJECT === true) {
+                if (global.config.CALL_REJECT === true) {
                     c = c.map((c) => c)[0];
                     let { status, from, id } = c;
                     if (status == "offer") {
@@ -140,7 +139,7 @@ async function Iris() {
                 if (!msg) return;
 
                 let text_msg = msg.body;
-                if (text_msg && config.LOGS) {
+                if (text_msg && global.config.LOGS) {
                     console.log(
                         `At : ${msg.from.endsWith("@g.us") ? (await conn.groupMetadata(msg.from)).subject : msg.from}\nFrom : ${msg.sender}\nMessage:${text_msg}\nSudo:${msg.sudo}`
                     );
@@ -149,7 +148,7 @@ async function Iris() {
                 events.commands.map(async (command) => {
                     if (command.fromMe && !msg.sudo) return;
 
-                    let prefix = config.HANDLERS.trim();
+                    let prefix = global.config.HANDLERS.trim();
                     let comman = text_msg;
 
                     if (command?.pattern instanceof RegExp && typeof comman === "string") {
@@ -165,7 +164,7 @@ async function Iris() {
                     msg.prefix = prefix;
 
                     try {
-                        if (config.ALWAYS_ONLINE === true) {
+                        if (global.config.ALWAYS_ONLINE === true) {
                             conn.sendPresenceUpdate("available", msg.key.remoteJid);
                         } else {
                             conn.sendPresenceUpdate("unavailable", msg.key.remoteJid);
