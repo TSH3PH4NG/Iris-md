@@ -16,7 +16,7 @@ const EV = require("events");
 EV.setMaxListeners(0);
 
 global.cache = {
-	groups: new NodeCache({ stdTTL: 400, checkperiod: 320, useClones: false }), /*stdTTL == Standard Time-To-Live , the rest should make sense homie🦦*/
+	groups: new NodeCache({ stdTTL: 400, checkperiod: 320, useClones: false }), /*stdTTL == Standard Time-To-Live , the rest should make sense homieðŸ¦¦*/
 	messages: new NodeCache({ stdTTL: 60, checkperiod: 80, useClones: false }),
 };
 
@@ -81,7 +81,7 @@ async function Iris() {
                     let { status, from, id } = c;
                     if (status == "offer") {
                         await conn.rejectCall(id, from);
-                        return conn.sendMessage(from, { text: "_NUMBER UNDER ARTIFICIAL INTELLIGENCE, NO 📞_" });
+                        return conn.sendMessage(from, { text: "_NUMBER UNDER ARTIFICIAL INTELLIGENCE, NO ðŸ“ž_" });
                     }
                 }
             } catch (error) {
@@ -116,16 +116,28 @@ async function Iris() {
 
         conn.ev.on("creds.update", saveCreds);
         
-        conn.ev.on("groups.update", async (events) => {
-        for (const event of events) {
+    conn.ev.on("groups.update", async (events) => {
+    for (const event of events) {
+        try {
+            const metadata = await conn.groupMetadata(event.id);
+            global.cache.groups.set(event.id, metadata);
+        } catch (err) {
+            console.error(`Failed to get group metadata for ${event.id}:`, err.message);
+            global.cache.groups.del(event.id); // Optional: clean it from cache
+        }
+    }
+});
+
+   conn.ev.on("group-participants.update", async (event) => {
+    try {
         const metadata = await conn.groupMetadata(event.id);
         global.cache.groups.set(event.id, metadata);
-            }
-        });
-        conn.ev.on("group-participants.update", async (event) => {
-        const metadata = await conn.groupMetadata(event.id);
-        global.cache.groups.set(event.id, metadata);
-         });
+    } catch (err) {
+        console.error(`Failed to get group metadata for ${event.id}:`, err.message);
+        global.cache.groups.del(event.id);
+    }
+});
+
 
 
 
