@@ -1,35 +1,49 @@
-const {
-    DataTypes
-} = require('sequelize');
+const fs = require("fs");
+const path = require("path");
 
-const PluginDB = global.config.DATABASE.define('Plugin', {
-    name: {
-        type: DataTypes.STRING,
-        allowNull: false
-    },
-    url: {
-        type: DataTypes.TEXT,
-        allowNull: false
-    }
-});
+const dbPath = path.join(__dirname, "database.json");
 
-async function installPlugin(adres, file) {
-    const existingPlugin = await PluginDB.findOne({
-        where: {
-            url: adres
-        }
-    });
 
-    if (existingPlugin) {
-        return false;
-    } else {
-        return await PluginDB.create({
-            url: adres, name: file
-        });
-    }
+if (!fs.existsSync(dbPath)) {
+  fs.writeFileSync(dbPath, JSON.stringify({ plugins: [] }, null, 2));
 }
 
-module.exports = {
-    PluginDB,
-    installPlugin
+function readDB() {
+  return JSON.parse(fs.readFileSync(dbPath, "utf8"));
+}
+
+function writeDB(data) {
+  fs.writeFileSync(dbPath, JSON.stringify(data, null, 2));
+}
+
+async function installPlugin(url, name) {
+  const db = readDB();
+  const exists = db.plugins.find(p => p.url === url);
+  if (exists) return false;
+
+  db.plugins.push({ name, url });
+  writeDB(db);
+  return true;
+}
+
+async function getPlugins() {
+  const db = readDB();
+  return db.plugins;
+}
+
+
+async function removePluginByName(name) {
+  const db = readDB();
+  const index = db.plugins.findIndex(p => p.name === name);
+  if (index === -1) return false;
+
+  db.plugins.splice(index, 1);
+  writeDB(db);
+  return true;
+}
+
+global.PluginDB = {
+  installPlugin,
+  getPlugins,
+  removePluginByName
 };
