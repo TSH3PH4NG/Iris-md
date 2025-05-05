@@ -146,7 +146,7 @@ async function Iris() {
                 }
 
                 events.commands.map(async (command) => {
-                    if (command.fromMe && !global.config.SUDO) return;
+                    if (command.fromMe && !msg.sudo) return;
 
                     let prefix = global.config.HANDLERS.trim();
                     let comman = text_msg;
