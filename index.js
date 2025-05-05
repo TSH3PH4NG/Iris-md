@@ -3,19 +3,21 @@ const path = require("path");
 const fs = require("fs");
 const config = require("./config");
 const pino = require("pino");
+const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
+const logger = pino({ level: "silent" });
+const { MakeSession } = require("./lib/session");
 const { Message } = require("./lib/Messages");
 const { serialize, parsedJid } = require("./lib");
 const events = require("./lib/events");
 const express = require("express");
 const app = express();
 const port = config.PORT;
+const NodeCache = require('node-cache');
 
-const EV = require("events");
-EV.setMaxListeners(0);
-
-const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
-const logger = pino({ level: "silent" });
-const { MakeSession } = require("./lib/session");
+global.cache = {
+	groups: new NodeCache({ stdTTL: 400, checkperiod: 320, useClones: false }), /*stdTTL == Standard Time-To-Live , the rest should make sense homie🦦*/
+	messages: new NodeCache({ stdTTL: 60, checkperiod: 80, useClones: false }),
+};
 
 if (!fs.existsSync("./resources/auth/creds.json")) {
     MakeSession(config.SESSION_ID, "./resources/auth/creds.json").then(() =>
@@ -64,6 +66,13 @@ async function Iris() {
             emitOwnEvents: false,
             generateHighQualityLinkPreview: true,
             defaultQueryTimeoutMs: undefined,
+            cachedGroupMetadata: async (jid) => {
+            const cachedData = global.cache.groups.get(jid);
+            if (cachedData) return cachedData;
+            const metadata = await conn.groupMetadata(jid);
+            global.cache.groups.set(jid, metadata);
+            return metadata;
+            }
         });
 
         conn.ev.on("call", async (c) => {
@@ -107,6 +116,19 @@ async function Iris() {
         });
 
         conn.ev.on("creds.update", saveCreds);
+        
+        conn.ev.on("groups.update", async (events) => {
+        for (const event of events) {
+        const metadata = await conn.groupMetadata(event.id);
+        global.cache.groups.set(event.id, metadata);
+            }
+        });
+        conn.ev.on("group-participants.update", async (event) => {
+        const metadata = await conn.groupMetadata(event.id);
+        global.cache.groups.set(event.id, metadata);
+         });
+
+
 
         conn.ev.on("messages.upsert", async (m) => {
             try {
