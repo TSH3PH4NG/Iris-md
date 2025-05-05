@@ -1,29 +1,25 @@
 const { command } = require("../lib");
 const axios = require("axios");
 const fs = require("fs");
-const {
-    PluginDB,
-    installPlugin
-} = require("../resources/database").Plugins;
 
 command(
   {
     pattern: "install",
     fromMe: true,
     desc: "Installs External plugins",
-    type: "user",
+    type: "user"
   },
   async (message, match) => {
-    if (!match)
-      return await message.reply( "_Send a plugin url_");
+    if (!match) return await message.reply("_Send a plugin URL_");
 
     try {
-      var url = new URL(match);
+      let url = new URL(match);
     } catch (e) {
       console.log(e);
-      return await message.reply( "_Invalid Url_");
+      return await message.reply("_Invalid URL_");
     }
 
+    
     if (url.host === "gist.github.com") {
       url.host = "gist.githubusercontent.com";
       url = url.toString() + "/raw";
@@ -31,81 +27,72 @@ command(
       url = url.toString();
     }
 
-    var plugin_name;
+    let plugin_name;
     try {
       const { data, status } = await axios.get(url);
       if (status === 200) {
-        var comand = data.match(/(?<=pattern:) ["'](.*?)["']/);
-        plugin_name = comand[0].replace(/["']/g, "").trim().split(" ")[0];
-        if (!plugin_name) {
-          plugin_name = "__" + Math.random().toString(36).substring(8);
-        }
+        const command = data.match(/(?<=pattern:) ["'](.*?)["']/);
+        plugin_name = command ? command[0].replace(/["']/g, "").trim().split(" ")[0] : "__" + Math.random().toString(36).substring(8);
+
+        
         fs.writeFileSync(__dirname + "/" + plugin_name + ".js", data);
         try {
           require("./" + plugin_name);
         } catch (e) {
           fs.unlinkSync(__dirname + "/" + plugin_name + ".js");
-          return await message.reply(
-            "Invalid Plugin\n ```" + e + "```"
-          );
+          return await message.reply("Invalid Plugin\n```" + e + "```");
         }
 
-        await installPlugin(url, plugin_name);
+        
+        const success = await global.PluginDB.installPlugin(url, plugin_name);
+        if (!success) {
+          return await message.reply("_Plugin already installed_");
+        }
 
-        await message.reply(
-          `_New plugin installed : ${plugin_name}_`
-        );
+        await message.reply(`_New plugin installed : ${plugin_name}_`);
       }
     } catch (error) {
       console.error(error);
-      return await message.reply( "Failed to fetch plugin");
-    }
-  }
-);
-
-command(
-  { pattern: "plugin", fromMe: true, desc: "plugin list", type: "user" },
-  async (message, match) => {
-    var mesaj = "";
-    var plugins = await PluginDB.findAll();
-    if (plugins.length < 1) {
-      return await message.reply(
-        "_No external plugins installed_"
-      );
-    } else {
-      plugins.map((plugin) => {
-        mesaj +=
-          "```" +
-          plugin.dataValues.name +
-          "```: " +
-          plugin.dataValues.url +
-          "\n";
-      });
-      return await message.reply(mesaj);
+      return await message.reply("Failed to fetch plugin");
     }
   }
 );
 
 command(
   {
+    pattern: "plugins",
+    fromMe: true,
+    desc: "Plugin list",
+    type: "user"
+  },
+  async (message, match) => {
+    const plugins = await global.PluginDB.getPlugins();
+    if (plugins.length < 1) {
+      return await message.reply("_No external plugins installed_");
+    }
+
+    const msg = plugins.map(p => `\`${p.name}\`: ${p.url}`).join("\n");
+    await message.reply(msg);
+  }
+);
+
+
+command(
+  {
     pattern: "remove",
     fromMe: true,
     desc: "Remove external plugins",
-    type: "user",
+    type: "user"
   },
   async (message, match) => {
-    if (!match)
-      return await message.reply( "_Need a plugin name_");
+    if (!match) return await message.reply("_Need a plugin name_");
 
-    var plugin = await PluginDB.findAll({ where: { name: match } });
+    const success = await global.PluginDB.removePluginByName(match);
+    if (!success) return await message.reply("_Plugin not found_");
 
-    if (plugin.length < 1) {
-      return await message.reply( "_Plugin not found_");
-    } else {
-      await plugin[0].destroy();
-      delete require.cache[require.resolve("./" + match + ".js")];
-      fs.unlinkSync(__dirname + "/" + match + ".js");
-      await message.reply( `Plugin ${match} deleted`);
-    }
+    delete require.cache[require.resolve("./" + match + ".js")];
+    fs.unlinkSync(__dirname + "/" + match + ".js");
+
+    await message.reply(`Plugin ${match} deleted`);
   }
 );
