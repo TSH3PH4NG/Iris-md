@@ -13,6 +13,8 @@ const express = require("express");
 const app = express();
 const port = config.PORT;
 const NodeCache = require('node-cache');
+const EV = require("events");
+EV.setMaxListeners(0);
 
 global.cache = {
 	groups: new NodeCache({ stdTTL: 400, checkperiod: 320, useClones: false }), /*stdTTL == Standard Time-To-Live , the rest should make sense homie🦦*/
