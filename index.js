@@ -51,8 +51,6 @@ const p = async () => {
 async function Iris() {
     try {
         console.log(`Syncing database`);
-        await global.config.DATABASE.sync();
-
         const { state, saveCreds } = await useMultiFileAuthState(`./resources/auth/`);
 
         let conn = makeWASocket({
