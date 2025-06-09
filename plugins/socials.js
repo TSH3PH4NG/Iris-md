@@ -11,12 +11,10 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
 
   try {
     if (instagramRegex.test(match)) {
-      let response = await getJson(`https://tshepang-yasuke-martin.hf.space/igdl?url=${match}`);
-      if (response.status !== 200) return;
-      let data = response.result.response.data;
+      let data = await getJson(`https://tshepang-yasuke-martin.hf.space/igdl?url=${match}`);
 
-      for (const { link , contentType} of data) {
-        let buffer = await getBuffer(url);
+      for (const { link , contentType } of data) {
+        let buffer = await getBuffer(link);
         if (type === "image/jpeg") {
           await message.client.sendMessage(
             message.jid,
