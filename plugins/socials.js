@@ -15,7 +15,7 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
 
       for (const { link , contentType } of data) {
         let buffer = await getBuffer(link);
-        if (type === "image/jpeg") {
+        if (contentType === "image/jpeg") {
           await message.client.sendMessage(
             message.jid,
             { image: buffer, caption: "*Instagram image*" },
