@@ -11,13 +11,13 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
 
   try {
     if (instagramRegex.test(match)) {
-      let response = await getJson(`https://api.vreden.my.id/api/igdownload?url=${match}`);
+      let response = await getJson(`https://tshepang-yasuke-martin.hf.space/igdl?url=${match}`);
       if (response.status !== 200) return;
       let data = response.result.response.data;
 
-      for (const { type, url } of data) {
+      for (const { link , contentType} of data) {
         let buffer = await getBuffer(url);
-        if (type === "image") {
+        if (type === "image/jpeg") {
           await message.client.sendMessage(
             message.jid,
             { image: buffer, caption: "*Instagram image*" },
@@ -43,28 +43,20 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
         { quoted: m }
       );
     } else {
-      let { result } = await getJson(`https://api.vreden.my.id/api/tiktok?url=${match}`);
-      let vx = result.data;
+const { data } = await axios.get(`https://diegoson-astarl.hf.space/tiktok?url=${match}`);
+    
+    if (data.status !== 200 || !data.data?.hdPlayUrl) {
+      return;
+    }
 
-      if (vx[0].type === "photo") {
-        for (const { url } of vx) {
-          let buffer = await getBuffer(url);
-          await message.client.sendMessage(
-            message.jid,
-            { image: buffer },
-            { quoted: m }
-          );
-        }
-      } else {
-        let filter = vx.filter(v => v.type === "nowatermark");
-        if (filter.length === 0) return;
-        let buffer = await getBuffer(filter[0].url);
+      const videoBuffer = await getBuffer(data.data.hdPlayUrl);
+
         return message.client.sendMessage(
           message.jid,
-          { video: buffer, caption: result.title },
+          { video: videoBuffer, caption: data.data.title },
           { quoted: m }
         );
-      }
+        
     }
   } catch (error) {
     console.log("Error processing request:", error);
