@@ -1,8 +1,7 @@
-const { default: makeWASocket, useMultiFileAuthState, Browsers, makeInMemoryStore, delay, makeCacheableSignalKeyStore, DisconnectReason } = require("@whiskeysockets/baileys");
+const { default: makeWASocket, useMultiFileAuthState, Browsers , delay, makeCacheableSignalKeyStore, DisconnectReason } = require("@whiskeysockets/baileys");
 const path = require("path");
 const fs = require("fs");
 const pino = require("pino");
-const store = makeInMemoryStore({ logger: pino().child({ level: "silent", stream: "store" }) });
 const logger = pino({ level: "silent" });
 const { MakeSession } = require("./lib/session");
 const { Message } = require("./lib/Messages");
