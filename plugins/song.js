@@ -4,7 +4,7 @@ const axios = require("axios");
 
 command({
 pattern: "song",
-fromMe: true
+fromMe: false
 },
 async(message,match, m)=>{
 if(!match) return message.reply("_i need a query_");
