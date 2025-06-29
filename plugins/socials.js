@@ -7,13 +7,19 @@ const facebookRegex = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/[^\s]+/;
 const tiktokRegex = /(?:https?:\/\/)?(?:www\.)?tiktok\.com\/[^\s]+/;
 
 command({ on: "text", fromMe: false }, async (message, match, m) => {
-  if (!instagramRegex.test(match) && !facebookRegex.test(match) && !tiktokRegex.test(match)) return;
+  if (
+    !instagramRegex.test(match) &&
+    !facebookRegex.test(match) &&
+    !tiktokRegex.test(match)
+  )
+    return;
 
   try {
     if (instagramRegex.test(match)) {
-      let data = await getJson(`https://tshepang-yasuke-martin.hf.space/igdl?url=${match}`);
-
-      for (const { link , contentType } of data) {
+      let data = await getJson(
+        `https://tshepang-yasuke-martin.hf.space/igdl?url=${match}`
+      );
+      for (const { link, contentType } of data) {
         let buffer = await getBuffer(link);
         if (contentType === "image/jpeg") {
           await message.client.sendMessage(
@@ -30,10 +36,11 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
         }
       }
     } else if (facebookRegex.test(match)) {
-      let { data } = await axios.get(`https://tshepang-yasuke-martin.hf.space/fb?url=${match}`);
+      let { data } = await axios.get(
+        `https://tshepang-yasuke-martin.hf.space/fb?url=${match}`
+      );
       let videoUrl = data.data["720p (HD)"] || data.data["360p (SD)"];
       if (!videoUrl) return;
-
       let buffer = await getBuffer(videoUrl);
       await message.client.sendMessage(
         message.jid,
@@ -41,20 +48,32 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
         { quoted: m }
       );
     } else {
-const { data } = await axios.get(`https://diegoson-astarl.hf.space/tiktok?url=${match}`);
-    
-    if (data.status !== 200 || !data.data?.hdPlayUrl) {
-      return;
-    }
+      const { data } = await axios.get(
+        `https://tshepang-yasuke-martin.hf.space/tiktok?url=${match}`
+      );
 
-      const videoBuffer = await getBuffer(data.data.hdPlayUrl);
+      if (data.status !== true) return;
 
-        return message.client.sendMessage(
-          message.jid,
-          { video: videoBuffer, caption: data.data.title },
-          { quoted: m }
-        );
-        
+           for (const item of data.media) {
+        if (
+          item.type === "video" &&
+          item.text.toLowerCase() === "download without watermark (hd)"
+        ) {
+          const videoBuffer = await getBuffer(item.href);
+          await message.client.sendMessage(
+            message.jid,
+            { video: videoBuffer, caption: "tiktok video" },
+            { quoted: m }
+          );
+        } else if (item.type === "image") {
+          const imageBuffer = await getBuffer(item.href);
+          await message.client.sendMessage(
+            message.jid,
+            { image: imageBuffer, caption: "tiktok image" },
+            { quoted: m }
+          );
+        }
+      }
     }
   } catch (error) {
     console.log("Error processing request:", error);
