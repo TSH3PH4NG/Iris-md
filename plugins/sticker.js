@@ -2,7 +2,7 @@ const { command , reply } = require("../lib");
 
 command({
 pattern: "sticker",
-fromMe: true,
+fromMe: false,
 }, async(message,match,m)=>{
   
 let { msg , status , mime } = await reply(m, "image&video");
