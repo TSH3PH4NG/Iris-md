@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hmmm.git"
+    "url": "git+https://github.com/TSH3PH4NG/Iris-md.git"
   },
   "dependencies": {
     "@whiskeysockets/baileys": "^6.7.18",    
