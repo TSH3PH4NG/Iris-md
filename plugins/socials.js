@@ -48,6 +48,7 @@ command({ on: "text", fromMe: false }, async (message, match, m) => {
         { quoted: m }
       );
     } else {
+      if(match == "https://www.tiktok.com/tiktoklite") return message.reply("You tweaking twin, that's an app url");
       const { data } = await axios.get(
         `https://tshepang-yasuke-martin.hf.space/tiktok?url=${match}`
       );
