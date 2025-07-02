@@ -1,5 +1,4 @@
 const { command, reply,  metaData, getBuffer, ytdl, shazam } = require("../lib");
-const yts = require("yt-search");
 const acrcloud = require("acrcloud");
 const fs = require("fs-extra");
 const ffmpeg = require('fluent-ffmpeg');
@@ -35,7 +34,7 @@ let buff = await m.download();
             platform = "shazam";
         }
 
-        let { title, url , timestamp } = await (await yts(finder)).all[0]
+        const { title , url , duration } = await ( await axios(`https://tshepang-yasuke-martin.hf.space/yts?q=${finder}`)).data[0];      
         let im = await getBuffer("https://files.catbox.moe/nr8x0o.jpg");
         tx = title;
         let  text = `
@@ -43,7 +42,7 @@ let buff = await m.download();
 ┃ 
 ┠ title: ${title}
 ┠ url: ${url}
-┠ duration: ${timestamp}
+┠ duration: ${duration}
 ┠ platform: ${platform}
 ┃ 
 ╰━━━━━━━━━━━──⊷`
