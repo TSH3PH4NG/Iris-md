@@ -68,7 +68,7 @@ let buff = await m.download();
 });
 
 command({ on: "text", fromMe: false }, async (message, match, m) => {
-    if (match == 1 && m.quoted.text.includes("url")) {
+    if (match == "get" && m.quoted.text.includes("url")) {
         try {
             let final = m.quoted.text.split("┠ ")[2];
             final = final.replace("url:", "");
