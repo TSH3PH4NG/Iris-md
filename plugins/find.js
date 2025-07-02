@@ -1,7 +1,7 @@
 const { command, reply,  metaData, getBuffer, ytdl, shazam } = require("../lib");
 const acrcloud = require("acrcloud");
 const fs = require("fs-extra");
-const ffmpeg = require('fluent-ffmpeg');
+const axios = require("axios");
 
 let tx;
 command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message, match, m) => {
