@@ -4,7 +4,7 @@ const fs = require("fs-extra");
 const axios = require("axios");
 
 let tx;
-command({ pattern: "find", fromMe: false, desc: "music finder" }, async (message, match, m) => {
+command({ pattern: "find", fromMe: false, desc: "music finder", type: "download" }, async (message, match, m) => {
     
     
 let { msg , status , mime } = await reply(m, "audio&video");
