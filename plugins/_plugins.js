@@ -81,7 +81,7 @@ command(
   {
     pattern: "remove",
     fromMe: true,
-    desc: "Remove external plugins",
+    desc: "Remove plugins",
     type: "user"
   },
   async (message, match) => {
