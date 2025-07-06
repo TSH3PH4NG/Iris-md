@@ -13,7 +13,7 @@ let styleIndex = 0;
 command({
     pattern: 'menu',
     fromMe: false,
-    desc: 'lcommands',
+    desc: 'List commands',
     dontAddCommandList: true,
     type: 'info'
 }, async (message) => {
