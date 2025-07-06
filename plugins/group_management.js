@@ -4,6 +4,8 @@ const { command , isAdmin } = require("../lib");
 command({
 	pattern: "group",
 	fromMe: true,
+	desc: "gc management",
+	type: "group"
 }, async(message,match, m)=>{
 	if(!message.jid.endsWith("@g.us")) return message.reply("only for groups");
 	let bb = await isAdmin(message.jid , message.user , message.client)
