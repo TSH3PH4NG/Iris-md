@@ -19,7 +19,7 @@ const userAgentList = [
 command({
 pattern: "url",
 fromMe: false,
-desc: "img/vid-url",
+desc: "Img/Vid - Url",
 type: "converter"
 }, async(message,match,m)=>{
     
