@@ -4,7 +4,9 @@ const {command} = require("../lib");
 
 command({
 pattern: "user",
-fromMe: true
+fromMe: true,
+desc: "device detection",
+type: "user"
 },
 async(message,match,m)=>{
 	
