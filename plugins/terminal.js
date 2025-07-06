@@ -5,7 +5,7 @@ command (
     {
         pattern: "run",
         fromMe: true,
-        desc: "get linux machine",
+        desc: "run linux machine",
         type: "machine"
     },
     async (message, match,m) => {
