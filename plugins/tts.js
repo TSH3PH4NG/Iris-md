@@ -14,6 +14,8 @@ const apiKey = '527cdd000ff0fca268a9d8eaf5d218a8';
 command({
 pattern: "tts",
 fromMe: true,
+desc: "text - vn",
+type: "converter"
 },
 async(message,match, m)=>{
 	
