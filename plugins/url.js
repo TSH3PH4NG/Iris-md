@@ -19,6 +19,8 @@ const userAgentList = [
 command({
 pattern: "url",
 fromMe: false,
+desc: "img/vid-url",
+type: "converter"
 }, async(message,match,m)=>{
     
     let { status , msg } = await reply(m,"all");
