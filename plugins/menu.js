@@ -53,7 +53,7 @@ commands.forEach(cmd => {
 
     const uptime = formatUptime(Math.floor(process.uptime()));
 
-    let response = `╭${currentStyle.border.repeat(3)}${currentStyle.header} ${global.config.BOT_NAME} ${currentStyle.footer}${currentStyle.border.repeat(3)}◆➤
+    let response = `╭${currentStyle.border.repeat(3)}${currentStyle.header} ${global.config.BOT_NAME} ${currentStyle.footer}${currentStyle.border.repeat(2)}◆➤
 ┃◦╭──────────────
 ┃◦│ Owner :  ${global.config.OWNER_NAME}
 ┃◦│ User : ${message.pushName}
@@ -66,10 +66,10 @@ commands.forEach(cmd => {
 ┃◦│  ⣾⣽⣻⢿⡿⣟⣯⣷⣾⣽⣻⢿⡿⣟⣯⣷
 ┃◦│
 ┃◦╰───────────────
-╰${currentStyle.border.repeat(18)}◆➤\n\n`;
+╰${currentStyle.border.repeat(15)}◆➤\n\n`;
 
     for (const [type, cmds] of Object.entries(categories)) {
-        response += `╭${currentStyle.border.repeat(4)}${currentStyle.header} ${type.toUpperCase()} ${currentStyle.footer}${currentStyle.border.repeat(4)}◆➤
+        response += `╭${currentStyle.border.repeat(4)}${currentStyle.header} ${type.toUpperCase()} ${currentStyle.footer}${currentStyle.border.repeat(2)}◆➤
 │◦╭─────────────────`;
       
     cmds.forEach(cmd => {  
@@ -77,7 +77,7 @@ response += `\n│◦│ ${currentStyle.bullet} ${cmd.name} ❲ _*${cmd.desc}*_ 
     });
     
         response += `\n┃◦╰─────────────────
-╰${currentStyle.border.repeat(19)}◆➤\n\n`;
+╰${currentStyle.border.repeat(15)}◆➤\n\n`;
     }
     await message.reply(response.trim());
 });
