@@ -25,8 +25,8 @@ global.config = {
   AUTHOR: process.env.AUTHOR || 'Tshephang',
   SUDO: initialSudo,
   CALL_REJECT: process.env.CALL_REJECT === 'true' || false,
-  OWNER_NAME: process.env.OWNER_NAME || 'Tshephang',
-  BOT_NAME: process.env.BOT_NAME || 'iris-md',
+  OWNER_NAME: process.env.OWNER_NAME || 'Tshepang',
+  BOT_NAME: process.env.BOT_NAME || '𝐼𝑅𝐼𝑆−𝑀𝐷',
   WORK_TYPE: process.env.WORK_TYPE || 'private',
   
 };
