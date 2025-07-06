@@ -4,7 +4,7 @@ command({
   pattern:"alive",
   fromMe: true,
   type: "misc",
-  desc: "bot status"
+  desc: "Bot status"
 },
 async(message , m , match)=>{
 let bb = await uptime(process.uptime())
