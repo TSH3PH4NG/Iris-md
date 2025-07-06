@@ -1,6 +1,6 @@
 const { command } = require("../lib");
 
-command({ pattern: "vo", fromMe: true }, async (message, match, m) => {
+command({ pattern: "vo", fromMe: true , desc: "decrypt vo" ,type:"user" }, async (message, match, m) => {
   if (!m.quoted.message.viewOnceMessageV2) return;
 
   const buffer = await m.quoted.download();
