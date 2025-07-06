@@ -31,8 +31,8 @@ command({
 command({
     pattern: "delsudo",
     fromMe: true,
-    desc: "Remove a user from sudo list",
-    usage: ".delsudo 27828418477"
+    desc: "Remove sudo",
+    type: "user"
 }, async (message, match) => {
     if (!match) return await message.reply("_Please provide a number. Example: .delsudo 27828418477_");
 
@@ -52,7 +52,8 @@ command({
 command({
     pattern: "getsudo",
     fromMe: true,
-    desc: "List all sudo users",
+    desc: "List sudo users",
+    type: "user"
 }, async (message) => {
     const sudoList = global.config.SUDO || [];
     if (sudoList.length === 0) {
