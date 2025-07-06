@@ -8,8 +8,8 @@ const validateNumber = (number) => {
 command({
     pattern: "setsudo",
     fromMe: true,
-    desc: "Add a user to sudo list",
-    usage: ".setsudo 27828418477"
+    desc: "set sudo",
+    type: "user"
 }, async (message, match) => {
     if (!match) return await message.reply("_Please provide a number. Example: .setsudo 27828418477_");
 
