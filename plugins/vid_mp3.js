@@ -4,6 +4,8 @@ const { command , toAudio , reply  } = require("../lib");
 command({
 	pattern: "mp3",
 	fromMe: false,
+        desc: "video - audio",
+        type: "converter"
 },
 async(message,match , m)=>{
 
