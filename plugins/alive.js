@@ -3,7 +3,8 @@ const { command , uptime } = require("../lib");
 command({
   pattern:"alive",
   fromMe: true,
-  desc: "test alive"
+  type: "misc",
+  desc: "bot status"
 },
 async(message , m , match)=>{
 let bb = await uptime(process.uptime())
