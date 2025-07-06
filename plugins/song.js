@@ -3,7 +3,9 @@ const axios = require("axios");
 
 command({
 pattern: "song",
-fromMe: false
+fromMe: false,
+desc: "Download songs",
+type: "download"
 },
 async(message,match, m)=>{
 if(!match) return message.reply("_i need a query_");
