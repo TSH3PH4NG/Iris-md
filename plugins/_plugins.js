@@ -6,7 +6,7 @@ command(
   {
     pattern: "install",
     fromMe: true,
-    desc: "Installs External plugins",
+    desc: "Installs plugins",
     type: "user"
   },
   async (message, match) => {
