@@ -3,7 +3,7 @@ const { command , reply } = require("../lib");
 command({
 pattern: "sticker",
 fromMe: false,
-desc: "img/vid-sticker",
+desc: "Img/Vid - Sticker",
 type: "converter"
 }, async(message,match,m)=>{
   
