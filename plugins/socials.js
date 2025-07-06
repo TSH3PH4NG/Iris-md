@@ -6,7 +6,7 @@ const instagramRegex = /(?:https?:\/\/)?(?:www\.)?instagram\.com\/[^\s]+/;
 const facebookRegex = /(?:https?:\/\/)?(?:www\.)?facebook\.com\/[^\s]+/;
 const tiktokRegex = /(?:https?:\/\/)?(?:www\.)?tiktok\.com\/[^\s]+/;
 
-command({ pattern: "socials" , on: "text", fromMe: false , type: "auto", desc: "tt/fb/insta" }, async (message, match, m) => {
+command({ pattern: "socials" , on: "text", fromMe: false , desc: "TT/FB/Insta" ,type: "auto" }, async (message, match, m) => {
   if (
     !instagramRegex.test(match) &&
     !facebookRegex.test(match) &&
