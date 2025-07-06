@@ -3,8 +3,11 @@
  
 
 command({
+	pattern: "ytmp4",
 	on: "text",
-	fromMe: false
+	fromMe: false,
+	type: "auto",
+	desc: "YT autodl"
 }, async(message, match ,m )=>{
 	
 	if(!isYT(match)) return;
