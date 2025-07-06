@@ -3,6 +3,8 @@ const { command , reply } = require("../lib");
 command({
 pattern: "sticker",
 fromMe: false,
+desc: "img/vid-sticker",
+type: "converter"
 }, async(message,match,m)=>{
   
 let { msg , status , mime } = await reply(m, "image&video");
