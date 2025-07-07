@@ -12,7 +12,7 @@ command({
 	
 	if(!isYT(match)) return;
 try{
-         let { url } = await getJson(`https://lordxdd-ytdlp.hf.space/ytv/?url=${match}&quality=480`);
+         let { url } = await getJson(`https://lordxdd-ytdlp.hf.space/ytv/?url=${match}&quality=720`);
          if(url.length == 0) return;
          let buff = await (await fetch(url)).arrayBuffer();
          let final_buffer = Buffer.from(buff);
