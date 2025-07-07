@@ -13,15 +13,15 @@ async(message,match,m)=>{
 let bb = await getDevice(message.reply_message.key.id)
 
 const name = {
-  "ios": "_IPHONE_",
-  "android": "android",
-  "web": "DESKTOP"
+  "ios": "*_IPHONE_*",
+  "android": "*_ANDROID_*",
+  "web": "*_DESKTOP_*"
 };
 
 bb = name[bb];
 
 return message.client.sendMessage(message.jid , {text: `
-_USER-PHONE_: ${bb}
+_USER-DEVICE_: ${bb}
 `}, {quoted: m })
 
 })
