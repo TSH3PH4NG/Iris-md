@@ -1,4 +1,4 @@
-FROM quay.io/yasuke/iris-md:latest
+FROM tshephang01/tshephang:latest
 
 LABEL version="8.1"
 RUN git clone https://github.com/TSH3PH4NG/Iris-md.git /iris/Iris-md
