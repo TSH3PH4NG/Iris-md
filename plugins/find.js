@@ -34,7 +34,7 @@ let buff = await m.download();
             platform = "shazam";
         }
 
-        const { title , url , duration } = await ( await axios(`https://tshepang-yasuke-martin.hf.space/yts?q=${finder}`)).data[0];      
+        const { title , url , duration } = await ( await axios(`https://api-ij32.onrender.com/yts?q=${finder}`)).data[0];      
         let im = await getBuffer("https://files.catbox.moe/nr8x0o.jpg");
         tx = title;
         let  text = `
