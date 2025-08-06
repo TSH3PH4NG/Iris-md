@@ -12,8 +12,7 @@ command({
 try{
          let { video , title } = await getJson(`https://api-ij32.onrender.com/download?url=${match}`)
          if(!video) return;
-         /*const res = await axios.get(video[720], { responseType: "stream" });*/
-         await message.client.sendMessage(
+	await message.client.sendMessage(
       message.jid,
       {
         document: { url: video[720] },
