@@ -1,4 +1,4 @@
-FROM tshephang01/tshephang:latest
+FROM tshephang01/iris:latest
 
 LABEL version="8.4"
 RUN git clone https://github.com/TSH3PH4NG/Iris-md.git /iris/Iris-md
