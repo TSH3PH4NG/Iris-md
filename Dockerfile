@@ -1,6 +1,6 @@
 FROM tshephang01/tshephang:latest
 
-LABEL version="8.3"
+LABEL version="8.4"
 RUN git clone https://github.com/TSH3PH4NG/Iris-md.git /iris/Iris-md
 WORKDIR /iris/Iris-md
 RUN rm -rf node_modules yarn.lock
