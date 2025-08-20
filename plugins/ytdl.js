@@ -4,13 +4,13 @@ const axios = require("axios");
 
 command({
 	on: "text",
-        pattern: "vsss",
+    pattern: "vsss",
 	fromMe: false,
 }, async(message, match ,m )=>{
 	
 	if(!isYT(match)) return;
 try{
-         let { video , title } = await getJson(`https://api-ij32.onrender.com/download?url=${match}`)
+         let { video , title } = await getJson(`https://api-ij32.onrender.com/download?url=${encodeURIComponent(match)}`)
          if(!video) return;
 	await message.client.sendMessage(
       message.jid,
