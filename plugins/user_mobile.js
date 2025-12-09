@@ -1,4 +1,4 @@
-const { getDevice } = require("@whiskeysockets/baileys");
+/*const { getDevice } = require("baileys");
 const {command} = require("../lib");
 
 
@@ -25,3 +25,4 @@ _USER-DEVICE_: ${bb}
 `}, {quoted: m })
 
 })
+*/
