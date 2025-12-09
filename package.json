@@ -1,6 +1,6 @@
 {
-  "name": "iris-md",
-  "version": "9.0.0",
+  "name": "iris-md-pro",
+  "version": "1.0.0",
   "description": "void",
   "main": "index.js",
   "scripts": {
@@ -11,24 +11,28 @@
     "type": "git",
     "url": "git+https://github.com/TSH3PH4NG/Iris-md.git"
   },
-  "dependencies": {
-    "@whiskeysockets/baileys": "^6.7.18",    
-    "@adiwajshing/keyed-db": "^0.2.4",
-    "@ffmpeg-installer/ffmpeg": "^1.1.0",
-    "@hapi/boom": "^10.0.1",    
-    "acrcloud": "^1.4.0",
-    "cheerio": "^1.0.0-rc.10",
-    "dotenv": "^16.3.1",
-    "express": "latest",
-    "file-type": "^16.5.3",
-    "fluent-ffmpeg": "^2.1.2",
-    "fs-extra": "^11.2.0",
-    "got": "^11.8.2",
-    "jimp": "^0.16.1",
-    "node-id3": "^0.2.8",
-    "node-webpmux": "^3.2.0",
-    "node-cache": "^5.1.2",
-    "pino": "^8.14.1",
-    "pm2": "^5.2.0"
-  }
+"dependencies": {
+"@adiwajshing/keyed-db": "^0.2.4",
+"@ffmpeg-installer/ffmpeg": "^1.1.0",
+"@hapi/boom": "^10.0.1",
+"acrcloud": "^1.4.0",
+"axios": "^1.6.6",
+"baileys": "npm:baileys@7.0.0-rc.8",
+"cheerio": "^1.0.0-rc.12",
+"dotenv": "^16.3.1",
+"express": "^4.21.1",
+"file-type": "^18.7.0",
+"fluent-ffmpeg": "^2.1.2",
+"fs-extra": "^11.2.0",
+"got": "^14.4.5",
+"jimp": "^1.6.0",
+"link-preview-js": "^3.1.0",
+"lodash": "^4.17.21",
+"node-cache": "^5.1.2",
+"node-id3": "^0.2.8",
+"node-webpmux": "^3.1.3",
+"pino": "^9.5.0",
+"pm2": "^5.4.3",
+"sharp": "^0.32.6"
+}
 }
