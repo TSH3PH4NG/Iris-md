@@ -37,49 +37,36 @@ let buff = await m.download();
         const { title , url , duration } = await ( await axios(`https://api-ij32.onrender.com/yts?q=${finder}`)).data[0];      
         let im = await getBuffer("https://files.catbox.moe/nr8x0o.jpg");
         tx = title;
-        let  text = `
-╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙
-┃ 
+        let  text = 
+`╭━━〘 𝑀𝑈𝑆𝐼𝐶 𝐹𝐼𝑁𝐷𝐸𝑅 〙 
 ┠ title: ${title}
-┠ url: ${url}
 ┠ duration: ${duration}
 ┠ platform: ${platform}
-┃ 
 ╰━━━━━━━━━━━──⊷`
 
-        await message.client.sendMessage(message.jid, {
-            text: text,
-            contextInfo: {
-                externalAdReply: {
-                    title: `𝐓𝐒𝐇𝐄𝐏𝐀𝐍𝐆 𝐌𝐀𝐑𝐓𝐈𝐍 𝐌𝐀𝐒𝐈𝐀`,
-                    mediaType: 1,
-                    previewType: 0,
-                    renderLargerThumbnail: true,
-                    thumbnail: im
-                }
+        await message.client.sendButton(message, {
+         image: im,
+         caption: text,
+         footer: "Made with 🫶 by Tshepang",
+         buttons: [{
+            text: "song",
+         	id:`.song ${url}`,
+         },
+           {
+            text: "video",
+           	id: `.ytv ${url}`,
+           },
+           {
+            options: {
+                text: "copy_url",
+                copy_code: url,
             }
+           },
+         ]
         }, { quoted: m });
 
 
     } catch (e) {
         message.reply(e);
-    }
-});
-
-command({ on: "text", fromMe: false }, async (message, match, m) => {
-    if (match == "get" && m.quoted.text.includes("url")) {
-        try {
-            let final = m.quoted.text.split("┠ ")[2];
-            final = final.replace("url:", "");
-            let ur_l = final;
-            let data = await ytdl(ur_l);
-            data = await metaData(tx, data);
-            await message.client.sendMessage(message.jid, {
-                audio: data,
-                mimetype: "audio/mpeg"
-            }, { quoted: m });
-        } catch (e) {
-            return e;
-        }
     }
 });
