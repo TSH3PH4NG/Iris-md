@@ -1,4 +1,4 @@
-const { default: makeWASocket, useMultiFileAuthState, Browsers , delay, makeCacheableSignalKeyStore, DisconnectReason } = require("@whiskeysockets/baileys");
+const { default: makeWASocket, useMultiFileAuthState, fetchLatestBaileysVersion, DisconnectReason } = require("baileys");
 const path = require("path");
 const fs = require("fs");
 const pino = require("pino");
@@ -13,6 +13,10 @@ const port = global.config.PORT;
 const NodeCache = require('node-cache');
 const EV = require("events");
 EV.setMaxListeners(0);
+
+const delay = async (ms) => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 global.cache = {
 	groups: new NodeCache({ stdTTL: 400, checkperiod: 320, useClones: false }), /*stdTTL == Standard Time-To-Live , the rest should make sense homieðŸ¦¦*/
@@ -51,18 +55,11 @@ async function Iris() {
     try {
         console.log(`Syncing database`);
         const { state, saveCreds } = await useMultiFileAuthState(`./resources/auth/`);
-
+        /*let { version } = await fetchLatestBaileysVersion();*/
         let conn = makeWASocket({
-            auth: { creds: state.creds, keys: makeCacheableSignalKeyStore(state.keys, logger) },
-            printQRInTerminal: false,
+            auth: state,
+			printQRInTerminal: false,
             logger: pino({ level: "silent" }),
-            browser: Browsers.macOS('Desktop'),
-            downloadHistory: false,
-            syncFullHistory: false,
-            markOnlineOnConnect: false,
-            getMessage: false,
-            emitOwnEvents: false,
-            generateHighQualityLinkPreview: true,
             defaultQueryTimeoutMs: undefined,
             cachedGroupMetadata: async (jid) => {
             const cachedData = global.cache.groups.get(jid);
