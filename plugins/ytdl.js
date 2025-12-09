@@ -4,7 +4,7 @@ const axios = require("axios");
 
 command({
 	on: "text",
-    pattern: "vsss",
+    pattern: "ytv",
 	fromMe: false,
 }, async(message, match ,m )=>{
 	
@@ -12,13 +12,14 @@ command({
 try{
          let { video , title } = await getJson(`https://api-ij32.onrender.com/download?url=${encodeURIComponent(match)}`)
          if(!video) return;
-	await message.client.sendMessage(
+         /*const res = await axios.get(video[720], { responseType: "stream" });*/
+         await message.client.sendMessage(
       message.jid,
       {
         document: { url: video[720] },
         mimetype: "video/mp4",
 	fileName: `${title}.mp4`,
-        caption: "_youtube_auto_dl_"
+        caption: "_youtube_video_"
       },
       { quoted: m }
     );
