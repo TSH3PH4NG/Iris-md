@@ -5,7 +5,7 @@ const qs = require("qs");
 
 async function pinterest(input) {
 	
-  let pin = await getJson(`https://api-olive-five-53.vercel.app/pinterest?query=${input}`);
+let pin = await getJson(`https://api-olive-five-53.vercel.app/pinterest?query=${input}`);
 return pin;
 
 }
