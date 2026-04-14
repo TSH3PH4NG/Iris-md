@@ -15,6 +15,10 @@ Powerful, lightweight WhatsApp bot built for speed, simplicity, and control.
 
 ---
 
+## coming soon
+
+truecaller clone similar but not the same
+
 ## Installation (Termux)
 
 ```bash
