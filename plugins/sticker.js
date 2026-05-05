@@ -31,4 +31,35 @@ break;
 
 }
 
-})
+});
+
+command(
+{
+  pattern: "photo",
+  fromMe: false
+},
+async (message, match, m) => {
+
+  if (!message.reply_message || !message.reply_message.sticker) {
+    return await message.reply("Reply to a sticker");
+  }
+
+  try {
+
+    let buffer = await m.quoted.download();
+
+    await message.client.sendMessage(
+      message.jid,
+      {
+        image: buffer,
+        mimetype: "image/png"
+      },
+      { quoted: m }
+    );
+
+  } catch (e) {
+    await message.reply("Error: " + e.message);
+  }
+
+}
+);
